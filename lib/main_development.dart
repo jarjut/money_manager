@@ -5,8 +5,8 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:money_manager/app/app.dart';
 import 'package:money_manager/bootstrap.dart';
+import 'package:money_manager/presentation/app/app.dart';
 
 void main() {
   bootstrap(() => const App());
