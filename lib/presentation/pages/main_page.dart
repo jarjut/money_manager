@@ -74,18 +74,22 @@ class _MainPageState extends State<MainPage> {
         onDestinationSelected: (index) => _onItemTapped(context, index),
         destinations: const [
           NavigationDestination(
+            key: Key('nav_main'),
             icon: FaIcon(FontAwesomeIcons.fileInvoiceDollar),
             label: 'Main',
           ),
           NavigationDestination(
+            key: Key('nav_statistics'),
             icon: FaIcon(FontAwesomeIcons.chartPie),
             label: 'Stats',
           ),
           NavigationDestination(
+            key: Key('nav_accounts'),
             icon: FaIcon(FontAwesomeIcons.creditCard),
             label: 'Accounts',
           ),
           NavigationDestination(
+            key: Key('nav_more'),
             icon: FaIcon(FontAwesomeIcons.ellipsis),
             label: 'More',
           ),
