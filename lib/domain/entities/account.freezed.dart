@@ -31,6 +31,8 @@ abstract class $AccountCopyWith<$Res> {
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
   $Res call({int id, AccountGroup accountGroup, String name, bool origin});
+
+  $AccountGroupCopyWith<$Res> get accountGroup;
 }
 
 /// @nodoc
@@ -70,6 +72,14 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
               as bool,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountGroupCopyWith<$Res> get accountGroup {
+    return $AccountGroupCopyWith<$Res>(_value.accountGroup, (value) {
+      return _then(_value.copyWith(accountGroup: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -80,6 +90,9 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   @override
   @useResult
   $Res call({int id, AccountGroup accountGroup, String name, bool origin});
+
+  @override
+  $AccountGroupCopyWith<$Res> get accountGroup;
 }
 
 /// @nodoc
@@ -148,15 +161,14 @@ class _$_Account implements _Account {
         (other.runtimeType == runtimeType &&
             other is _$_Account &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality()
-                .equals(other.accountGroup, accountGroup) &&
+            (identical(other.accountGroup, accountGroup) ||
+                other.accountGroup == accountGroup) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.origin, origin) || other.origin == origin));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id,
-      const DeepCollectionEquality().hash(accountGroup), name, origin);
+  int get hashCode => Object.hash(runtimeType, id, accountGroup, name, origin);
 
   @JsonKey(ignore: true)
   @override

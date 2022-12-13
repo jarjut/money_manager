@@ -1,4 +1,4 @@
-import 'package:money_manager/domain/core/failures.dart';
+import 'package:moneymanager/domain/core/value_failure.dart';
 
 class UnexpectedValueError<T> extends Error {
   UnexpectedValueError(this.valueFailure);

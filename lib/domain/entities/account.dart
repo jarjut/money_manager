@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:money_manager/infrastucture/core/local_database/local_database.dart';
+import 'package:moneymanager/domain/entities/account_group.dart';
 
 part 'account.freezed.dart';
 

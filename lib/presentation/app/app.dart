@@ -8,9 +8,9 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:money_manager/presentation/app/router/app_router.dart';
-import 'package:money_manager/presentation/app/theme/theme.dart';
-import 'package:money_manager/presentation/l10n/l10n.dart';
+import 'package:moneymanager/presentation/app/router/app_router.dart';
+import 'package:moneymanager/presentation/app/theme/theme.dart';
+import 'package:moneymanager/presentation/l10n/l10n.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

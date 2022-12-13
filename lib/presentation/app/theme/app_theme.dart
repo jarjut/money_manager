@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_manager/presentation/app/theme/theme.dart';
+import 'package:moneymanager/presentation/app/theme/theme.dart';
 
 class AppTheme {
   static ThemeData light(ColorScheme? colorScheme) => ThemeData(

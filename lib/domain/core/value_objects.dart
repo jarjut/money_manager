@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:money_manager/domain/core/errors.dart';
-import 'package:money_manager/domain/core/failures.dart';
+import 'package:moneymanager/domain/core/errors.dart';
+import 'package:moneymanager/domain/core/value_failure.dart';
 
 @immutable
 abstract class ValueObject<T> {

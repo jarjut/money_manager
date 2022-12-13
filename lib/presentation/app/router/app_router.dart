@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:money_manager/presentation/pages/accounts/accounts_page.dart';
-import 'package:money_manager/presentation/pages/dashboard/dashboard_page.dart';
-import 'package:money_manager/presentation/pages/main_page.dart';
-import 'package:money_manager/presentation/pages/more/more_page.dart';
-import 'package:money_manager/presentation/pages/statistics/statistics_page.dart';
+import 'package:moneymanager/presentation/pages/accounts/accounts_page.dart';
+import 'package:moneymanager/presentation/pages/dashboard/dashboard_page.dart';
+import 'package:moneymanager/presentation/pages/main_page.dart';
+import 'package:moneymanager/presentation/pages/more/more_page.dart';
+import 'package:moneymanager/presentation/pages/statistics/statistics_page.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 final mainNavigatorKey = GlobalKey<NavigatorState>();
