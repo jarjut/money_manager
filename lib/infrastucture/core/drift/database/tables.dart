@@ -2,14 +2,9 @@
 
 import 'package:drift/drift.dart';
 import 'package:flutter/painting.dart';
+import 'package:moneymanager/domain/entities/transaction.dart';
 
 part 'converter.dart';
-
-enum TransactionType {
-  expense,
-  income,
-  transfer,
-}
 
 @DataClassName('TCategory')
 class TCategories extends Table {
@@ -19,9 +14,7 @@ class TCategories extends Table {
       .references(TCategories, #id, onDelete: KeyAction.setNull)();
   TextColumn get name => text()();
   TextColumn get iconName => text()();
-  IntColumn get iconColor => integer()
-      .map(const ColorConverter())
-      .withDefault(const Constant(0xFF42a5f5))();
+  TextColumn get iconColorName => text()();
   IntColumn get type => intEnum<TransactionType>()();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
@@ -56,7 +49,7 @@ class TTransactions extends Table {
   IntColumn get type => intEnum<TransactionType>()();
   IntColumn get from => integer()(); // Accounts.id
   IntColumn get to => integer().nullable()(); // Accounts.id
-  IntColumn get amount => integer()();
+  RealColumn get amount => real()();
   TextColumn get note => text().nullable()();
   TextColumn get description => text().nullable()();
   DateTimeColumn get date => dateTime()();

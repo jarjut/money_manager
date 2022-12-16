@@ -15,39 +15,42 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Category {
-  String get id => throw _privateConstructorUsedError;
-  String? get categoryId => throw _privateConstructorUsedError;
+mixin _$TransactionCategory {
+  int get id => throw _privateConstructorUsedError;
+  int? get categoryId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  ContentType get type => throw _privateConstructorUsedError;
+  TransactionType get type => throw _privateConstructorUsedError;
   String get iconName => throw _privateConstructorUsedError;
   String get iconColorName => throw _privateConstructorUsedError;
-  List<Category> get children => throw _privateConstructorUsedError;
+  TransactionCategory? get parentCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CategoryCopyWith<Category> get copyWith =>
+  $TransactionCategoryCopyWith<TransactionCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res, Category>;
+abstract class $TransactionCategoryCopyWith<$Res> {
+  factory $TransactionCategoryCopyWith(
+          TransactionCategory value, $Res Function(TransactionCategory) then) =
+      _$TransactionCategoryCopyWithImpl<$Res, TransactionCategory>;
   @useResult
   $Res call(
-      {String id,
-      String? categoryId,
+      {int id,
+      int? categoryId,
       String name,
-      ContentType type,
+      TransactionType type,
       String iconName,
       String iconColorName,
-      List<Category> children});
+      TransactionCategory? parentCategory});
+
+  $TransactionCategoryCopyWith<$Res>? get parentCategory;
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res, $Val extends Category>
-    implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$TransactionCategoryCopyWithImpl<$Res, $Val extends TransactionCategory>
+    implements $TransactionCategoryCopyWith<$Res> {
+  _$TransactionCategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,17 +66,17 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? type = null,
     Object? iconName = null,
     Object? iconColorName = null,
-    Object? children = null,
+    Object? parentCategory = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -81,7 +84,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ContentType,
+              as TransactionType,
       iconName: null == iconName
           ? _value.iconName
           : iconName // ignore: cast_nullable_to_non_nullable
@@ -90,37 +93,53 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.iconColorName
           : iconColorName // ignore: cast_nullable_to_non_nullable
               as String,
-      children: null == children
-          ? _value.children
-          : children // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+      parentCategory: freezed == parentCategory
+          ? _value.parentCategory
+          : parentCategory // ignore: cast_nullable_to_non_nullable
+              as TransactionCategory?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TransactionCategoryCopyWith<$Res>? get parentCategory {
+    if (_value.parentCategory == null) {
+      return null;
+    }
+
+    return $TransactionCategoryCopyWith<$Res>(_value.parentCategory!, (value) {
+      return _then(_value.copyWith(parentCategory: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$$_CategoryCopyWith(
-          _$_Category value, $Res Function(_$_Category) then) =
-      __$$_CategoryCopyWithImpl<$Res>;
+abstract class _$$_TransactionCategoryCopyWith<$Res>
+    implements $TransactionCategoryCopyWith<$Res> {
+  factory _$$_TransactionCategoryCopyWith(_$_TransactionCategory value,
+          $Res Function(_$_TransactionCategory) then) =
+      __$$_TransactionCategoryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id,
-      String? categoryId,
+      {int id,
+      int? categoryId,
       String name,
-      ContentType type,
+      TransactionType type,
       String iconName,
       String iconColorName,
-      List<Category> children});
+      TransactionCategory? parentCategory});
+
+  @override
+  $TransactionCategoryCopyWith<$Res>? get parentCategory;
 }
 
 /// @nodoc
-class __$$_CategoryCopyWithImpl<$Res>
-    extends _$CategoryCopyWithImpl<$Res, _$_Category>
-    implements _$$_CategoryCopyWith<$Res> {
-  __$$_CategoryCopyWithImpl(
-      _$_Category _value, $Res Function(_$_Category) _then)
+class __$$_TransactionCategoryCopyWithImpl<$Res>
+    extends _$TransactionCategoryCopyWithImpl<$Res, _$_TransactionCategory>
+    implements _$$_TransactionCategoryCopyWith<$Res> {
+  __$$_TransactionCategoryCopyWithImpl(_$_TransactionCategory _value,
+      $Res Function(_$_TransactionCategory) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,17 +151,17 @@ class __$$_CategoryCopyWithImpl<$Res>
     Object? type = null,
     Object? iconName = null,
     Object? iconColorName = null,
-    Object? children = null,
+    Object? parentCategory = freezed,
   }) {
-    return _then(_$_Category(
+    return _then(_$_TransactionCategory(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       categoryId: freezed == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -150,7 +169,7 @@ class __$$_CategoryCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as ContentType,
+              as TransactionType,
       iconName: null == iconName
           ? _value.iconName
           : iconName // ignore: cast_nullable_to_non_nullable
@@ -159,57 +178,52 @@ class __$$_CategoryCopyWithImpl<$Res>
           ? _value.iconColorName
           : iconColorName // ignore: cast_nullable_to_non_nullable
               as String,
-      children: null == children
-          ? _value._children
-          : children // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+      parentCategory: freezed == parentCategory
+          ? _value.parentCategory
+          : parentCategory // ignore: cast_nullable_to_non_nullable
+              as TransactionCategory?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Category implements _Category {
-  const _$_Category(
+class _$_TransactionCategory extends _TransactionCategory {
+  const _$_TransactionCategory(
       {required this.id,
       this.categoryId,
       required this.name,
       required this.type,
       required this.iconName,
       required this.iconColorName,
-      final List<Category> children = const []})
-      : _children = children;
+      this.parentCategory})
+      : super._();
 
   @override
-  final String id;
+  final int id;
   @override
-  final String? categoryId;
+  final int? categoryId;
   @override
   final String name;
   @override
-  final ContentType type;
+  final TransactionType type;
   @override
   final String iconName;
   @override
   final String iconColorName;
-  final List<Category> _children;
   @override
-  @JsonKey()
-  List<Category> get children {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_children);
-  }
+  final TransactionCategory? parentCategory;
 
   @override
   String toString() {
-    return 'Category(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, children: $children)';
+    return 'TransactionCategory(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, parentCategory: $parentCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Category &&
+            other is _$_TransactionCategory &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
@@ -219,46 +233,49 @@ class _$_Category implements _Category {
                 other.iconName == iconName) &&
             (identical(other.iconColorName, iconColorName) ||
                 other.iconColorName == iconColorName) &&
-            const DeepCollectionEquality().equals(other._children, _children));
+            (identical(other.parentCategory, parentCategory) ||
+                other.parentCategory == parentCategory));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, categoryId, name, type,
-      iconName, iconColorName, const DeepCollectionEquality().hash(_children));
+      iconName, iconColorName, parentCategory);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
-      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
+  _$$_TransactionCategoryCopyWith<_$_TransactionCategory> get copyWith =>
+      __$$_TransactionCategoryCopyWithImpl<_$_TransactionCategory>(
+          this, _$identity);
 }
 
-abstract class _Category implements Category {
-  const factory _Category(
-      {required final String id,
-      final String? categoryId,
+abstract class _TransactionCategory extends TransactionCategory {
+  const factory _TransactionCategory(
+      {required final int id,
+      final int? categoryId,
       required final String name,
-      required final ContentType type,
+      required final TransactionType type,
       required final String iconName,
       required final String iconColorName,
-      final List<Category> children}) = _$_Category;
+      final TransactionCategory? parentCategory}) = _$_TransactionCategory;
+  const _TransactionCategory._() : super._();
 
   @override
-  String get id;
+  int get id;
   @override
-  String? get categoryId;
+  int? get categoryId;
   @override
   String get name;
   @override
-  ContentType get type;
+  TransactionType get type;
   @override
   String get iconName;
   @override
   String get iconColorName;
   @override
-  List<Category> get children;
+  TransactionCategory? get parentCategory;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+  _$$_TransactionCategoryCopyWith<_$_TransactionCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }

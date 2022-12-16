@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import 'package:app_database/src/dao/transactions_dao.dart';
-import 'package:app_database/src/database/tables.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:moneymanager/domain/entities/entities.dart';
+import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';
+import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
 part 'main.g.dart';
+part 'extension.dart';
 
 /// {@template app_database}
 /// Main Database class.

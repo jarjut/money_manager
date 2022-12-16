@@ -14,11 +14,12 @@ enum TransactionType {
 class Transaction with _$Transaction {
   const factory Transaction({
     required int id,
-    required Category category,
+    required TransactionCategory category,
     required Account from,
-    required Account to,
+    Account? to,
     required double amount,
     String? note,
+    String? description,
     required TransactionType type,
     required DateTime date,
   }) = _Transaction;

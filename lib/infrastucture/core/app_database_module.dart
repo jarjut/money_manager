@@ -1,5 +1,5 @@
-import 'package:app_database/app_database.dart';
 import 'package:injectable/injectable.dart';
+import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 
 @module
 abstract class AppDatabaseModule {

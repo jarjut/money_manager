@@ -1,9 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'transactions_dao.dart';
+part of 'categories_dao.dart';
 
 // **************************************************************************
 // DaoGenerator
 // **************************************************************************
 
-mixin _$TransactionsDaoMixin on DatabaseAccessor<AppDatabase> {}
+mixin _$CategoriesDaoMixin on DatabaseAccessor<AppDatabase> {
+  $TCategoriesTable get tCategories => attachedDatabase.tCategories;
+}

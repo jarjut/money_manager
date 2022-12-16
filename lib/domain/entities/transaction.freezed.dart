@@ -17,11 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Transaction {
   int get id => throw _privateConstructorUsedError;
-  Category get category => throw _privateConstructorUsedError;
+  TransactionCategory get category => throw _privateConstructorUsedError;
   Account get from => throw _privateConstructorUsedError;
-  Account get to => throw _privateConstructorUsedError;
+  Account? get to => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   TransactionType get type => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
 
@@ -38,17 +39,18 @@ abstract class $TransactionCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      Category category,
+      TransactionCategory category,
       Account from,
-      Account to,
+      Account? to,
       double amount,
       String? note,
+      String? description,
       TransactionType type,
       DateTime date});
 
-  $CategoryCopyWith<$Res> get category;
+  $TransactionCategoryCopyWith<$Res> get category;
   $AccountCopyWith<$Res> get from;
-  $AccountCopyWith<$Res> get to;
+  $AccountCopyWith<$Res>? get to;
 }
 
 /// @nodoc
@@ -67,9 +69,10 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     Object? id = null,
     Object? category = null,
     Object? from = null,
-    Object? to = null,
+    Object? to = freezed,
     Object? amount = null,
     Object? note = freezed,
+    Object? description = freezed,
     Object? type = null,
     Object? date = null,
   }) {
@@ -81,15 +84,15 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as TransactionCategory,
       from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as Account,
-      to: null == to
+      to: freezed == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
-              as Account,
+              as Account?,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -97,6 +100,10 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       type: null == type
           ? _value.type
@@ -111,8 +118,8 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
 
   @override
   @pragma('vm:prefer-inline')
-  $CategoryCopyWith<$Res> get category {
-    return $CategoryCopyWith<$Res>(_value.category, (value) {
+  $TransactionCategoryCopyWith<$Res> get category {
+    return $TransactionCategoryCopyWith<$Res>(_value.category, (value) {
       return _then(_value.copyWith(category: value) as $Val);
     });
   }
@@ -127,8 +134,12 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
 
   @override
   @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res> get to {
-    return $AccountCopyWith<$Res>(_value.to, (value) {
+  $AccountCopyWith<$Res>? get to {
+    if (_value.to == null) {
+      return null;
+    }
+
+    return $AccountCopyWith<$Res>(_value.to!, (value) {
       return _then(_value.copyWith(to: value) as $Val);
     });
   }
@@ -144,20 +155,21 @@ abstract class _$$_TransactionCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      Category category,
+      TransactionCategory category,
       Account from,
-      Account to,
+      Account? to,
       double amount,
       String? note,
+      String? description,
       TransactionType type,
       DateTime date});
 
   @override
-  $CategoryCopyWith<$Res> get category;
+  $TransactionCategoryCopyWith<$Res> get category;
   @override
   $AccountCopyWith<$Res> get from;
   @override
-  $AccountCopyWith<$Res> get to;
+  $AccountCopyWith<$Res>? get to;
 }
 
 /// @nodoc
@@ -174,9 +186,10 @@ class __$$_TransactionCopyWithImpl<$Res>
     Object? id = null,
     Object? category = null,
     Object? from = null,
-    Object? to = null,
+    Object? to = freezed,
     Object? amount = null,
     Object? note = freezed,
+    Object? description = freezed,
     Object? type = null,
     Object? date = null,
   }) {
@@ -188,15 +201,15 @@ class __$$_TransactionCopyWithImpl<$Res>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as TransactionCategory,
       from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as Account,
-      to: null == to
+      to: freezed == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
-              as Account,
+              as Account?,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -204,6 +217,10 @@ class __$$_TransactionCopyWithImpl<$Res>
       note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       type: null == type
           ? _value.type
@@ -224,24 +241,27 @@ class _$_Transaction implements _Transaction {
       {required this.id,
       required this.category,
       required this.from,
-      required this.to,
+      this.to,
       required this.amount,
       this.note,
+      this.description,
       required this.type,
       required this.date});
 
   @override
   final int id;
   @override
-  final Category category;
+  final TransactionCategory category;
   @override
   final Account from;
   @override
-  final Account to;
+  final Account? to;
   @override
   final double amount;
   @override
   final String? note;
+  @override
+  final String? description;
   @override
   final TransactionType type;
   @override
@@ -249,7 +269,7 @@ class _$_Transaction implements _Transaction {
 
   @override
   String toString() {
-    return 'Transaction(id: $id, category: $category, from: $from, to: $to, amount: $amount, note: $note, type: $type, date: $date)';
+    return 'Transaction(id: $id, category: $category, from: $from, to: $to, amount: $amount, note: $note, description: $description, type: $type, date: $date)';
   }
 
   @override
@@ -264,13 +284,15 @@ class _$_Transaction implements _Transaction {
             (identical(other.to, to) || other.to == to) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.note, note) || other.note == note) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, category, from, to, amount, note, type, date);
+  int get hashCode => Object.hash(runtimeType, id, category, from, to, amount,
+      note, description, type, date);
 
   @JsonKey(ignore: true)
   @override
@@ -282,26 +304,29 @@ class _$_Transaction implements _Transaction {
 abstract class _Transaction implements Transaction {
   const factory _Transaction(
       {required final int id,
-      required final Category category,
+      required final TransactionCategory category,
       required final Account from,
-      required final Account to,
+      final Account? to,
       required final double amount,
       final String? note,
+      final String? description,
       required final TransactionType type,
       required final DateTime date}) = _$_Transaction;
 
   @override
   int get id;
   @override
-  Category get category;
+  TransactionCategory get category;
   @override
   Account get from;
   @override
-  Account get to;
+  Account? get to;
   @override
   double get amount;
   @override
   String? get note;
+  @override
+  String? get description;
   @override
   TransactionType get type;
   @override
