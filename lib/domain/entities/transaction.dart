@@ -22,5 +22,12 @@ class Transaction with _$Transaction {
     String? description,
     required TransactionType type,
     required DateTime date,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    DateTime? deletedAt,
   }) = _Transaction;
+
+  const Transaction._();
+
+  bool get isDeleted => deletedAt != null;
 }

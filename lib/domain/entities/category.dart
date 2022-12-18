@@ -13,9 +13,13 @@ class TransactionCategory with _$TransactionCategory {
     required String iconName,
     required String iconColorName,
     TransactionCategory? parentCategory,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    DateTime? deletedAt,
   }) = _TransactionCategory;
 
   const TransactionCategory._();
 
   bool get isParent => categoryId == null;
+  bool get isDeleted => deletedAt != null;
 }

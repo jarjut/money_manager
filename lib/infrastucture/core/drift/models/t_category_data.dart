@@ -46,6 +46,23 @@ class TCategoryData {
     );
   }
 
+  factory TCategoryData.fromEntity(TransactionCategory entity) {
+    return TCategoryData(
+      id: entity.id,
+      parentCategory: entity.parentCategory != null
+          ? TCategoryData.fromEntity(entity.parentCategory!)
+          : null,
+      categoryId: entity.categoryId,
+      name: entity.name,
+      iconName: entity.iconName,
+      iconColorName: entity.iconColorName,
+      type: entity.type,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
+    );
+  }
+
   TransactionCategory toEntity() {
     return TransactionCategory(
       id: id,
@@ -55,6 +72,9 @@ class TCategoryData {
       iconName: iconName,
       type: type,
       parentCategory: parentCategory?.toEntity(),
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      deletedAt: deletedAt,
     );
   }
 }

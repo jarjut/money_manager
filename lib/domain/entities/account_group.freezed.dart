@@ -19,6 +19,9 @@ mixin _$AccountGroup {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get origin => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccountGroupCopyWith<AccountGroup> get copyWith =>
@@ -31,7 +34,13 @@ abstract class $AccountGroupCopyWith<$Res> {
           AccountGroup value, $Res Function(AccountGroup) then) =
       _$AccountGroupCopyWithImpl<$Res, AccountGroup>;
   @useResult
-  $Res call({int id, String name, bool origin});
+  $Res call(
+      {int id,
+      String name,
+      bool origin,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -50,6 +59,9 @@ class _$AccountGroupCopyWithImpl<$Res, $Val extends AccountGroup>
     Object? id = null,
     Object? name = null,
     Object? origin = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -64,6 +76,18 @@ class _$AccountGroupCopyWithImpl<$Res, $Val extends AccountGroup>
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
               as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -76,7 +100,13 @@ abstract class _$$_AccountGroupCopyWith<$Res>
       __$$_AccountGroupCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, bool origin});
+  $Res call(
+      {int id,
+      String name,
+      bool origin,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 }
 
 /// @nodoc
@@ -93,6 +123,9 @@ class __$$_AccountGroupCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? origin = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$_AccountGroup(
       id: null == id
@@ -107,15 +140,33 @@ class __$$_AccountGroupCopyWithImpl<$Res>
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
               as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AccountGroup implements _AccountGroup {
+class _$_AccountGroup extends _AccountGroup {
   const _$_AccountGroup(
-      {required this.id, required this.name, this.origin = false});
+      {required this.id,
+      required this.name,
+      this.origin = false,
+      required this.createdAt,
+      required this.updatedAt,
+      this.deletedAt})
+      : super._();
 
   @override
   final int id;
@@ -124,10 +175,16 @@ class _$_AccountGroup implements _AccountGroup {
   @override
   @JsonKey()
   final bool origin;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'AccountGroup(id: $id, name: $name, origin: $origin)';
+    return 'AccountGroup(id: $id, name: $name, origin: $origin, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -137,11 +194,18 @@ class _$_AccountGroup implements _AccountGroup {
             other is _$_AccountGroup &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.origin, origin) || other.origin == origin));
+            (identical(other.origin, origin) || other.origin == origin) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, origin);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, origin, createdAt, updatedAt, deletedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -150,11 +214,15 @@ class _$_AccountGroup implements _AccountGroup {
       __$$_AccountGroupCopyWithImpl<_$_AccountGroup>(this, _$identity);
 }
 
-abstract class _AccountGroup implements AccountGroup {
+abstract class _AccountGroup extends AccountGroup {
   const factory _AccountGroup(
       {required final int id,
       required final String name,
-      final bool origin}) = _$_AccountGroup;
+      final bool origin,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$_AccountGroup;
+  const _AccountGroup._() : super._();
 
   @override
   int get id;
@@ -162,6 +230,12 @@ abstract class _AccountGroup implements AccountGroup {
   String get name;
   @override
   bool get origin;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_AccountGroupCopyWith<_$_AccountGroup> get copyWith =>

@@ -1,20 +1,17 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:moneymanager/domain/core/failure.dart';
 import 'package:moneymanager/domain/entities/transaction.dart';
-import 'package:moneymanager/domain/transaction/i_transaction_repository.dart';
+import 'package:moneymanager/domain/transaction/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
-import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';
 
 @LazySingleton(as: ITransactionRepository)
 class TransactionRepository implements ITransactionRepository {
-  TransactionRepository(AppDatabase appDatabase)
-      : _transactionsDao = appDatabase.transactionsDao;
+  TransactionRepository(this._appDatabase);
 
-  final TransactionsDao _transactionsDao;
+  final AppDatabase _appDatabase;
 
   @override
-  Future<Either<Failure, Unit>> addTransaction({
+  Future<Either<TransactionFailure, Unit>> addTransaction({
     required int categoryId,
     required TransactionType type,
     required int fromAccountId,
@@ -25,7 +22,7 @@ class TransactionRepository implements ITransactionRepository {
     required DateTime date,
   }) async {
     try {
-      await _transactionsDao.addTransaction(
+      await _appDatabase.transactionsDao.addTransaction(
         categoryId: categoryId,
         type: type,
         fromAccountId: fromAccountId,
@@ -37,44 +34,68 @@ class TransactionRepository implements ITransactionRepository {
       );
       return const Right(unit);
     } catch (e) {
-      return const Left(Failure.databaseFailure());
+      return const Left(TransactionFailure.databaseFailure());
     }
   }
 
   @override
-  Future<Either<Failure, Transaction>> getTransaction(int id) async {
+  Future<Either<TransactionFailure, Transaction>> getTransaction(int id) async {
     try {
-      final result = await _transactionsDao.getTransaction(id);
+      final result = await _appDatabase.transactionsDao.getTransaction(id);
       if (result == null) {
-        return const Left(Failure.databaseFailure());
+        return const Left(TransactionFailure.notFound());
       }
       return Right(result.toEntity());
     } catch (e) {
-      return const Left(Failure.databaseFailure());
+      return const Left(TransactionFailure.databaseFailure());
     }
   }
 
   @override
-  Future<Either<Failure, List<Transaction>>> getTransactions({
+  Future<Either<TransactionFailure, List<Transaction>>> getTransactions({
     DateTime? from,
     DateTime? to,
     int? categoryId,
     int? accountId,
     TransactionType? type,
-  }) {
-    // TODO: implement getTransactions
-    throw UnimplementedError();
+  }) async {
+    try {
+      final result = await _appDatabase.transactionsDao.getTransactions(
+        fromDate: from,
+        toDate: to,
+        categoryId: categoryId,
+        accountId: accountId,
+        type: type,
+      );
+      return Right(result.map((e) => e.toEntity()).toList());
+    } catch (e) {
+      return const Left(TransactionFailure.databaseFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Unit>> updateTransaction(Transaction transaction) {
-    // TODO: implement updateTransaction
-    throw UnimplementedError();
+  Future<Either<TransactionFailure, Unit>> updateTransaction(
+    Transaction transaction,
+  ) async {
+    try {
+      await _appDatabase.transactionsDao.updateTransaction(
+        TTransactionData.fromEntity(transaction).transaction,
+      );
+      return const Right(unit);
+    } catch (e) {
+      return const Left(TransactionFailure.databaseFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Unit>> deleteTransaction(Transaction transaction) {
-    // TODO: implement deleteTransaction
-    throw UnimplementedError();
+  Future<Either<TransactionFailure, Unit>> deleteTransaction(
+    Transaction transaction,
+  ) async {
+    try {
+      await _appDatabase.transactionsDao.deleteTransaction(transaction.id);
+      return const Right(unit);
+    } catch (e) {
+      return const Left(TransactionFailure.databaseFailure());
+    }
   }
 }

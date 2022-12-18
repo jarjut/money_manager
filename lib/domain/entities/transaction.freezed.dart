@@ -25,6 +25,9 @@ mixin _$Transaction {
   String? get description => throw _privateConstructorUsedError;
   TransactionType get type => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TransactionCopyWith<Transaction> get copyWith =>
@@ -46,7 +49,10 @@ abstract class $TransactionCopyWith<$Res> {
       String? note,
       String? description,
       TransactionType type,
-      DateTime date});
+      DateTime date,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 
   $TransactionCategoryCopyWith<$Res> get category;
   $AccountCopyWith<$Res> get from;
@@ -75,6 +81,9 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     Object? description = freezed,
     Object? type = null,
     Object? date = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -113,6 +122,18 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 
@@ -162,7 +183,10 @@ abstract class _$$_TransactionCopyWith<$Res>
       String? note,
       String? description,
       TransactionType type,
-      DateTime date});
+      DateTime date,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 
   @override
   $TransactionCategoryCopyWith<$Res> get category;
@@ -192,6 +216,9 @@ class __$$_TransactionCopyWithImpl<$Res>
     Object? description = freezed,
     Object? type = null,
     Object? date = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$_Transaction(
       id: null == id
@@ -230,13 +257,25 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Transaction implements _Transaction {
+class _$_Transaction extends _Transaction {
   const _$_Transaction(
       {required this.id,
       required this.category,
@@ -246,7 +285,11 @@ class _$_Transaction implements _Transaction {
       this.note,
       this.description,
       required this.type,
-      required this.date});
+      required this.date,
+      required this.createdAt,
+      required this.updatedAt,
+      this.deletedAt})
+      : super._();
 
   @override
   final int id;
@@ -266,10 +309,16 @@ class _$_Transaction implements _Transaction {
   final TransactionType type;
   @override
   final DateTime date;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Transaction(id: $id, category: $category, from: $from, to: $to, amount: $amount, note: $note, description: $description, type: $type, date: $date)';
+    return 'Transaction(id: $id, category: $category, from: $from, to: $to, amount: $amount, note: $note, description: $description, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -287,12 +336,18 @@ class _$_Transaction implements _Transaction {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, category, from, to, amount,
-      note, description, type, date);
+      note, description, type, date, createdAt, updatedAt, deletedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -301,7 +356,7 @@ class _$_Transaction implements _Transaction {
       __$$_TransactionCopyWithImpl<_$_Transaction>(this, _$identity);
 }
 
-abstract class _Transaction implements Transaction {
+abstract class _Transaction extends Transaction {
   const factory _Transaction(
       {required final int id,
       required final TransactionCategory category,
@@ -311,7 +366,11 @@ abstract class _Transaction implements Transaction {
       final String? note,
       final String? description,
       required final TransactionType type,
-      required final DateTime date}) = _$_Transaction;
+      required final DateTime date,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$_Transaction;
+  const _Transaction._() : super._();
 
   @override
   int get id;
@@ -331,6 +390,12 @@ abstract class _Transaction implements Transaction {
   TransactionType get type;
   @override
   DateTime get date;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_TransactionCopyWith<_$_Transaction> get copyWith =>

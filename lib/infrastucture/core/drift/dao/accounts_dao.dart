@@ -1,7 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
-import 'package:moneymanager/infrastucture/core/drift/models/t_account_data.dart';
 
 part 'accounts_dao.g.dart';
 

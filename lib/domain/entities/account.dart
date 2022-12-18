@@ -10,5 +10,12 @@ class Account with _$Account {
     required AccountGroup accountGroup,
     required String name,
     @Default(false) bool origin,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    DateTime? deletedAt,
   }) = _Account;
+
+  const Account._();
+
+  bool get isDeleted => deletedAt != null;
 }

@@ -9,6 +9,9 @@ extension XTCategory on TCategory {
       iconColorName: iconColorName,
       type: type,
       categoryId: categoryId,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      deletedAt: deletedAt,
     );
   }
 }

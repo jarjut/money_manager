@@ -2,8 +2,6 @@ import 'package:drift/drift.dart';
 import 'package:moneymanager/domain/entities/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
-import 'package:moneymanager/infrastucture/core/drift/models/t_account_data.dart';
-import 'package:moneymanager/infrastucture/core/drift/models/t_transaction_data.dart';
 
 part 'transactions_dao.g.dart';
 
@@ -100,5 +98,92 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
           ? TAccountData(account: toAccount, accountGroup: toAccountGroup!)
           : null,
     );
+  }
+
+  /// Get all transactions
+  Future<List<TTransactionData>> getTransactions({
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? categoryId,
+    int? accountId,
+    TransactionType? type,
+  }) async {
+    final parentCategories = alias(tCategories, 'parent_categories');
+    final from = alias(tAccounts, 'from');
+    final fromGroup = alias(tAccountGroups, 'from_group');
+    final to = alias(tAccounts, 'to');
+    final toGroup = alias(tAccountGroups, 'to_group');
+    final query = select(tTransactions).join([
+      innerJoin(
+        tCategories,
+        tTransactions.categoryId.equalsExp(tCategories.id),
+      ),
+      leftOuterJoin(
+        parentCategories,
+        tCategories.categoryId.equalsExp(parentCategories.id),
+      ),
+      innerJoin(
+        from,
+        tTransactions.from.equalsExp(from.id),
+      ),
+      innerJoin(
+        fromGroup,
+        from.id.equalsExp(fromGroup.id),
+      ),
+      leftOuterJoin(
+        to,
+        tTransactions.to.equalsExp(to.id),
+      ),
+      innerJoin(
+        toGroup,
+        to.id.equalsExp(toGroup.id),
+      ),
+    ]);
+    if (fromDate != null) {
+      query.where(tTransactions.date.isBiggerOrEqualValue(fromDate));
+    }
+    if (toDate != null) {
+      query.where(tTransactions.date.isSmallerOrEqualValue(toDate));
+    }
+    if (categoryId != null) {
+      query.where(tTransactions.categoryId.equals(categoryId));
+    }
+    if (accountId != null) {
+      query.where(tTransactions.from.equals(accountId));
+    }
+    if (type != null) {
+      query.where(tTransactions.type.equalsValue(type));
+    }
+    final result = await query.get();
+    return result.map((row) {
+      final transaction = row.readTable(tTransactions);
+      final category = row.readTable(tCategories);
+      final parentCategory = row.readTableOrNull(parentCategories);
+      final fromAccount = row.readTable(from);
+      final fromAccountGroup = row.readTable(fromGroup);
+      final toAccount = row.readTableOrNull(to);
+      final toAccountGroup = row.readTableOrNull(toGroup);
+      return TTransactionData(
+        transaction: transaction,
+        category: TCategoryData.fromTableClass(category, parentCategory),
+        from: TAccountData(
+          account: fromAccount,
+          accountGroup: fromAccountGroup,
+        ),
+        to: toAccount != null
+            ? TAccountData(account: toAccount, accountGroup: toAccountGroup!)
+            : null,
+      );
+    }).toList();
+  }
+
+  /// Update a transaction
+  Future<void> updateTransaction(TTransaction transaction) async {
+    await update(tTransactions).replace(transaction);
+  }
+
+  /// Delete a transaction
+  Future<void> deleteTransaction(int id) async {
+    await (delete(tTransactions)..where((t) => t.id.equals(id))).go();
   }
 }

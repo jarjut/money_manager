@@ -23,6 +23,9 @@ mixin _$TransactionCategory {
   String get iconName => throw _privateConstructorUsedError;
   String get iconColorName => throw _privateConstructorUsedError;
   TransactionCategory? get parentCategory => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TransactionCategoryCopyWith<TransactionCategory> get copyWith =>
@@ -42,7 +45,10 @@ abstract class $TransactionCategoryCopyWith<$Res> {
       TransactionType type,
       String iconName,
       String iconColorName,
-      TransactionCategory? parentCategory});
+      TransactionCategory? parentCategory,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 
   $TransactionCategoryCopyWith<$Res>? get parentCategory;
 }
@@ -67,6 +73,9 @@ class _$TransactionCategoryCopyWithImpl<$Res, $Val extends TransactionCategory>
     Object? iconName = null,
     Object? iconColorName = null,
     Object? parentCategory = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,6 +106,18 @@ class _$TransactionCategoryCopyWithImpl<$Res, $Val extends TransactionCategory>
           ? _value.parentCategory
           : parentCategory // ignore: cast_nullable_to_non_nullable
               as TransactionCategory?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 
@@ -128,7 +149,10 @@ abstract class _$$_TransactionCategoryCopyWith<$Res>
       TransactionType type,
       String iconName,
       String iconColorName,
-      TransactionCategory? parentCategory});
+      TransactionCategory? parentCategory,
+      DateTime createdAt,
+      DateTime updatedAt,
+      DateTime? deletedAt});
 
   @override
   $TransactionCategoryCopyWith<$Res>? get parentCategory;
@@ -152,6 +176,9 @@ class __$$_TransactionCategoryCopyWithImpl<$Res>
     Object? iconName = null,
     Object? iconColorName = null,
     Object? parentCategory = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$_TransactionCategory(
       id: null == id
@@ -182,6 +209,18 @@ class __$$_TransactionCategoryCopyWithImpl<$Res>
           ? _value.parentCategory
           : parentCategory // ignore: cast_nullable_to_non_nullable
               as TransactionCategory?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deletedAt: freezed == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -196,7 +235,10 @@ class _$_TransactionCategory extends _TransactionCategory {
       required this.type,
       required this.iconName,
       required this.iconColorName,
-      this.parentCategory})
+      this.parentCategory,
+      required this.createdAt,
+      required this.updatedAt,
+      this.deletedAt})
       : super._();
 
   @override
@@ -213,10 +255,16 @@ class _$_TransactionCategory extends _TransactionCategory {
   final String iconColorName;
   @override
   final TransactionCategory? parentCategory;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'TransactionCategory(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, parentCategory: $parentCategory)';
+    return 'TransactionCategory(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, parentCategory: $parentCategory, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -234,12 +282,18 @@ class _$_TransactionCategory extends _TransactionCategory {
             (identical(other.iconColorName, iconColorName) ||
                 other.iconColorName == iconColorName) &&
             (identical(other.parentCategory, parentCategory) ||
-                other.parentCategory == parentCategory));
+                other.parentCategory == parentCategory) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.deletedAt, deletedAt) ||
+                other.deletedAt == deletedAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, categoryId, name, type,
-      iconName, iconColorName, parentCategory);
+      iconName, iconColorName, parentCategory, createdAt, updatedAt, deletedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -257,7 +311,10 @@ abstract class _TransactionCategory extends TransactionCategory {
       required final TransactionType type,
       required final String iconName,
       required final String iconColorName,
-      final TransactionCategory? parentCategory}) = _$_TransactionCategory;
+      final TransactionCategory? parentCategory,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      final DateTime? deletedAt}) = _$_TransactionCategory;
   const _TransactionCategory._() : super._();
 
   @override
@@ -274,6 +331,12 @@ abstract class _TransactionCategory extends TransactionCategory {
   String get iconColorName;
   @override
   TransactionCategory? get parentCategory;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
+  @override
+  DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_TransactionCategoryCopyWith<_$_TransactionCategory> get copyWith =>
