@@ -1,9 +1,11 @@
 import 'package:drift/drift.dart';
+import 'package:injectable/injectable.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
 part 'categories_dao.g.dart';
 
+@lazySingleton
 @DriftAccessor(
   tables: [TCategories],
 )

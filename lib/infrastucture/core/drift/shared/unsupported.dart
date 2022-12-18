@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 
 /// constructDB based on the platform.

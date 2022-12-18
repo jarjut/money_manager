@@ -3,12 +3,13 @@ import 'package:injectable/injectable.dart';
 import 'package:moneymanager/domain/entities/transaction.dart';
 import 'package:moneymanager/domain/transaction/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
+import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';
 
 @LazySingleton(as: ITransactionRepository)
 class TransactionRepository implements ITransactionRepository {
-  TransactionRepository(this._appDatabase);
+  TransactionRepository(this._transactionsDao);
 
-  final AppDatabase _appDatabase;
+  final TransactionsDao _transactionsDao;
 
   @override
   Future<Either<TransactionFailure, Unit>> addTransaction({
@@ -22,7 +23,7 @@ class TransactionRepository implements ITransactionRepository {
     required DateTime date,
   }) async {
     try {
-      await _appDatabase.transactionsDao.addTransaction(
+      await _transactionsDao.addTransaction(
         categoryId: categoryId,
         type: type,
         fromAccountId: fromAccountId,
@@ -41,7 +42,7 @@ class TransactionRepository implements ITransactionRepository {
   @override
   Future<Either<TransactionFailure, Transaction>> getTransaction(int id) async {
     try {
-      final result = await _appDatabase.transactionsDao.getTransaction(id);
+      final result = await _transactionsDao.getTransaction(id);
       if (result == null) {
         return const Left(TransactionFailure.notFound());
       }
@@ -60,7 +61,7 @@ class TransactionRepository implements ITransactionRepository {
     TransactionType? type,
   }) async {
     try {
-      final result = await _appDatabase.transactionsDao.getTransactions(
+      final result = await _transactionsDao.getTransactions(
         fromDate: from,
         toDate: to,
         categoryId: categoryId,
@@ -78,7 +79,7 @@ class TransactionRepository implements ITransactionRepository {
     Transaction transaction,
   ) async {
     try {
-      await _appDatabase.transactionsDao.updateTransaction(
+      await _transactionsDao.updateTransaction(
         TTransactionData.fromEntity(transaction).transaction,
       );
       return const Right(unit);
@@ -92,7 +93,7 @@ class TransactionRepository implements ITransactionRepository {
     Transaction transaction,
   ) async {
     try {
-      await _appDatabase.transactionsDao.deleteTransaction(transaction.id);
+      await _transactionsDao.deleteTransaction(transaction.id);
       return const Right(unit);
     } catch (e) {
       return const Left(TransactionFailure.databaseFailure());

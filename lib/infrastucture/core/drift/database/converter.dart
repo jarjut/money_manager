@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 part of 'tables.dart';
 
 /// {@template color_converter}

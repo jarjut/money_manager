@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:injectable/injectable.dart';
 import 'package:moneymanager/domain/entities/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
@@ -8,6 +9,7 @@ part 'transactions_dao.g.dart';
 /// {@template transactions_dao}
 /// Data Access Object for Transactions.
 /// {@endtemplate}
+@lazySingleton
 @DriftAccessor(
   tables: [
     TTransactions,

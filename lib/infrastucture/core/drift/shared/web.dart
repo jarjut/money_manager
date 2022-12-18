@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:drift/web.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 

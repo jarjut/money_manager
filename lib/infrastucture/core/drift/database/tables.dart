@@ -1,3 +1,4 @@
+// coverage:ignore-file
 // ignore_for_file: strict_raw_type, public_member_api_docs
 
 import 'package:drift/drift.dart';
