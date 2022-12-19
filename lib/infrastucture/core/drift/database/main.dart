@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:moneymanager/domain/entities/entities.dart';
+import 'package:moneymanager/domain/core/entities/entities.dart';
 import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
@@ -93,7 +93,6 @@ class AppDatabase extends _$AppDatabase {
       TAccountsCompanion.insert(
         accountGroupId: cashGroup.id,
         name: 'Cash',
-        currency: 'USD',
       ),
     );
     final accountGroup = await into(tAccountGroups).insertReturning(
@@ -106,7 +105,6 @@ class AppDatabase extends _$AppDatabase {
       TAccountsCompanion.insert(
         accountGroupId: accountGroup.id,
         name: 'Accounts',
-        currency: 'USD',
       ),
     );
     await into(tAccountGroups).insert(

@@ -1,4 +1,4 @@
-import 'package:moneymanager/domain/entities/entities.dart';
+import 'package:moneymanager/domain/core/entities/entities.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 
 import 'account_dummy.dart';

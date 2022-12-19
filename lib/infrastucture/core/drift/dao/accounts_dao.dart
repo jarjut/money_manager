@@ -16,6 +16,24 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
     with _$AccountsDaoMixin {
   AccountsDao(super.db);
 
+  /// Add new account group
+  Future<TAccount> addAccount({
+    required String name,
+    required int accountGroupId,
+    double? initialBalance,
+  }) async {
+    return transaction<TAccount>(() async {
+      final result = await into(tAccounts).insertReturning(
+        TAccountsCompanion.insert(
+          name: name,
+          accountGroupId: accountGroupId,
+        ),
+      );
+      // TODO(jarjut): Add initial balance transaction
+      return result;
+    });
+  }
+
   /// Get All accounts with account group
   Future<List<TAccountData>> getAllAccounts() async {
     final query = select(tAccounts).join([

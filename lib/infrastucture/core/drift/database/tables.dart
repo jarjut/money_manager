@@ -3,7 +3,7 @@
 
 import 'package:drift/drift.dart';
 import 'package:flutter/painting.dart';
-import 'package:moneymanager/domain/entities/transaction.dart';
+import 'package:moneymanager/domain/core/entities/transaction.dart';
 
 part 'converter.dart';
 
@@ -36,7 +36,7 @@ class TAccounts extends Table {
   IntColumn get accountGroupId => integer().references(TAccountGroups, #id)();
   TextColumn get name => text()();
   TextColumn get description => text().nullable()();
-  TextColumn get currency => text()();
+  TextColumn get currency => text().withDefault(const Constant('USD'))();
   TextColumn get icon => text().nullable()();
   BoolColumn get origin => boolean().withDefault(const Constant(false))();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();

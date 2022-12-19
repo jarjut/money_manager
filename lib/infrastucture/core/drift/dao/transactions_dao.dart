@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
-import 'package:moneymanager/domain/entities/transaction.dart';
+import 'package:moneymanager/domain/core/entities/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 

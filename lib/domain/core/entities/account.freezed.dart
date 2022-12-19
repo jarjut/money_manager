@@ -22,6 +22,7 @@ mixin _$Account {
   bool get origin => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  double get balance => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,6 +41,7 @@ abstract class $AccountCopyWith<$Res> {
       bool origin,
       DateTime createdAt,
       DateTime updatedAt,
+      double balance,
       DateTime? deletedAt});
 
   $AccountGroupCopyWith<$Res> get accountGroup;
@@ -64,6 +66,7 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? origin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? balance = null,
     Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -91,6 +94,10 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as double,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -121,6 +128,7 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       bool origin,
       DateTime createdAt,
       DateTime updatedAt,
+      double balance,
       DateTime? deletedAt});
 
   @override
@@ -143,6 +151,7 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? origin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? balance = null,
     Object? deletedAt = freezed,
   }) {
     return _then(_$_Account(
@@ -170,6 +179,10 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as double,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -188,6 +201,7 @@ class _$_Account extends _Account {
       this.origin = false,
       required this.createdAt,
       required this.updatedAt,
+      this.balance = 0,
       this.deletedAt})
       : super._();
 
@@ -205,11 +219,14 @@ class _$_Account extends _Account {
   @override
   final DateTime updatedAt;
   @override
+  @JsonKey()
+  final double balance;
+  @override
   final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Account(id: $id, accountGroup: $accountGroup, name: $name, origin: $origin, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'Account(id: $id, accountGroup: $accountGroup, name: $name, origin: $origin, createdAt: $createdAt, updatedAt: $updatedAt, balance: $balance, deletedAt: $deletedAt)';
   }
 
   @override
@@ -226,13 +243,14 @@ class _$_Account extends _Account {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
+            (identical(other.balance, balance) || other.balance == balance) &&
             (identical(other.deletedAt, deletedAt) ||
                 other.deletedAt == deletedAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, accountGroup, name, origin,
-      createdAt, updatedAt, deletedAt);
+      createdAt, updatedAt, balance, deletedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -249,6 +267,7 @@ abstract class _Account extends Account {
       final bool origin,
       required final DateTime createdAt,
       required final DateTime updatedAt,
+      final double balance,
       final DateTime? deletedAt}) = _$_Account;
   const _Account._() : super._();
 
@@ -264,6 +283,8 @@ abstract class _Account extends Account {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  double get balance;
   @override
   DateTime? get deletedAt;
   @override

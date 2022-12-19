@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moneymanager/domain/entities/account_group.dart';
+import 'package:moneymanager/domain/core/entities/account_group.dart';
 
 part 'account.freezed.dart';
 
@@ -12,6 +12,7 @@ class Account with _$Account {
     @Default(false) bool origin,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @Default(0) double balance,
     DateTime? deletedAt,
   }) = _Account;
 

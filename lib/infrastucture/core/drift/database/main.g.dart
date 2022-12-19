@@ -1,4 +1,3 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'main.dart';
@@ -950,15 +949,14 @@ class TAccountsCompanion extends UpdateCompanion<TAccount> {
     required int accountGroupId,
     required String name,
     this.description = const Value.absent(),
-    required String currency,
+    this.currency = const Value.absent(),
     this.icon = const Value.absent(),
     this.origin = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.deletedAt = const Value.absent(),
   })  : accountGroupId = Value(accountGroupId),
-        name = Value(name),
-        currency = Value(currency);
+        name = Value(name);
   static Insertable<TAccount> custom({
     Expression<int>? id,
     Expression<int>? accountGroupId,
@@ -1100,7 +1098,9 @@ class $TAccountsTable extends TAccounts
   @override
   late final GeneratedColumn<String> currency = GeneratedColumn<String>(
       'currency', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('USD'));
   final VerificationMeta _iconMeta = const VerificationMeta('icon');
   @override
   late final GeneratedColumn<String> icon = GeneratedColumn<String>(
@@ -1181,8 +1181,6 @@ class $TAccountsTable extends TAccounts
     if (data.containsKey('currency')) {
       context.handle(_currencyMeta,
           currency.isAcceptableOrUnknown(data['currency']!, _currencyMeta));
-    } else if (isInserting) {
-      context.missing(_currencyMeta);
     }
     if (data.containsKey('icon')) {
       context.handle(

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moneymanager/domain/entities/account.dart';
-import 'package:moneymanager/domain/entities/category.dart';
+import 'package:moneymanager/domain/core/entities/account.dart';
+import 'package:moneymanager/domain/core/entities/category.dart';
 
 part 'transaction.freezed.dart';
 

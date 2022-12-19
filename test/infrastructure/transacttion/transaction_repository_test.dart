@@ -3,7 +3,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:moneymanager/domain/entities/transaction.dart';
+import 'package:moneymanager/domain/core/entities/transaction.dart';
 import 'package:moneymanager/domain/transaction/transaction_failure.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';

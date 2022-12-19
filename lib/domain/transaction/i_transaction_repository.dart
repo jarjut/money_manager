@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:moneymanager/domain/entities/transaction.dart';
+import 'package:moneymanager/domain/core/entities/transaction.dart';
 import 'package:moneymanager/domain/transaction/transaction_failure.dart';
 
 abstract class ITransactionRepository {

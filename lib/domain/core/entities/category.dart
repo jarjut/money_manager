@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moneymanager/domain/entities/entities.dart';
+import 'package:moneymanager/domain/core/entities/entities.dart';
 
 part 'category.freezed.dart';
 
