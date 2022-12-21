@@ -6,6 +6,8 @@ import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:moneymanager/domain/core/entities/entities.dart';
+import 'package:moneymanager/infrastucture/core/drift/dao/accounts_dao.dart';
+import 'package:moneymanager/infrastucture/core/drift/dao/categories_dao.dart';
 import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
@@ -24,7 +26,11 @@ part 'extension.dart';
     TBudgets,
     TDataCurrencies,
   ],
-  daos: [TransactionsDao],
+  daos: [
+    AccountsDao,
+    CategoriesDao,
+    TransactionsDao,
+  ],
 )
 class AppDatabase extends _$AppDatabase {
   /// {@macro app_database}

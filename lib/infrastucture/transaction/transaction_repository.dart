@@ -11,17 +11,38 @@ class TransactionRepository implements ITransactionRepository {
 
   final TransactionsDao _transactionsDao;
 
+  /// Add Transaction to Local Database.
+  ///
+  /// * If [TransactionType.income], [toAccountId] is required.
+  /// * If [TransactionType.expense], [fromAccountId] is required.
+  /// * If [TransactionType.transfer], [fromAccountId] and
+  /// [toAccountId] are required.
+  ///
+  /// If the transaction is not valid,
+  /// it returns [TransactionFailure.invalidTransaction].
   @override
   Future<Either<TransactionFailure, Unit>> addTransaction({
     required int categoryId,
     required TransactionType type,
-    required int fromAccountId,
+    int? fromAccountId,
     int? toAccountId,
     required double amount,
     String? note,
     String? description,
     required DateTime date,
   }) async {
+    // Check if the transaction is valid
+    if (type == TransactionType.income && toAccountId == null) {
+      return const Left(TransactionFailure.invalidTransaction());
+    }
+    if (type == TransactionType.expense && fromAccountId == null) {
+      return const Left(TransactionFailure.invalidTransaction());
+    }
+    if (type == TransactionType.transfer &&
+        (fromAccountId == null || toAccountId == null)) {
+      return const Left(TransactionFailure.invalidTransaction());
+    }
+
     try {
       await _transactionsDao.addTransaction(
         categoryId: categoryId,
@@ -39,6 +60,9 @@ class TransactionRepository implements ITransactionRepository {
     }
   }
 
+  /// Get a transaction by id
+  ///
+  /// If the transaction is not found, it returns [TransactionFailure.notFound].
   @override
   Future<Either<TransactionFailure, Transaction>> getTransaction(int id) async {
     try {

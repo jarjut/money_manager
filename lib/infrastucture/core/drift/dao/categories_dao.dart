@@ -21,7 +21,8 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase>
         parentCategories,
         tCategories.categoryId.equalsExp(parentCategories.id),
       ),
-    ]);
+    ])
+      ..where(tCategories.hidden.equals(false));
     final result = await query.get();
     return result.map((row) {
       final category = row.readTable(tCategories);

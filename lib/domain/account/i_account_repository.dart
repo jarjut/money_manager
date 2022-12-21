@@ -20,8 +20,16 @@ abstract class IAccountRepository {
   Future<Either<AccountFailure, Account>> getAccount(int id);
 
   /// Update an account
-  Future<Either<AccountFailure, Unit>> updateAccount(Account account);
+  ///
+  /// * [balanceChange] is the amount to be added to the current balance, if
+  /// balanceChange is negative, it will create a transaction of type expense.
+  /// and if balanceChange is positive, it will create a transaction of type
+  /// income
+  Future<Either<AccountFailure, Unit>> updateAccount({
+    required Account account,
+    double balanceChange = 0,
+  });
 
-  /// Delete an account
-  Future<Either<AccountFailure, Unit>> deleteAccount(Account account);
+  /// Mark account as deleted
+  Future<Either<AccountFailure, Unit>> softDeleteAccount(Account account);
 }

@@ -21,6 +21,7 @@ mixin _$TransactionFailure {
     required TResult Function() unexpected,
     required TResult Function() notFound,
     required TResult Function() databaseFailure,
+    required TResult Function() invalidTransaction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$TransactionFailure {
     TResult? Function()? unexpected,
     TResult? Function()? notFound,
     TResult? Function()? databaseFailure,
+    TResult? Function()? invalidTransaction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$TransactionFailure {
     TResult Function()? unexpected,
     TResult Function()? notFound,
     TResult Function()? databaseFailure,
+    TResult Function()? invalidTransaction,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$TransactionFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_DatabaseFailure value) databaseFailure,
+    required TResult Function(_InvalidTransaction value) invalidTransaction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$TransactionFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_DatabaseFailure value)? databaseFailure,
+    TResult? Function(_InvalidTransaction value)? invalidTransaction,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$TransactionFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_DatabaseFailure value)? databaseFailure,
+    TResult Function(_InvalidTransaction value)? invalidTransaction,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() notFound,
     required TResult Function() databaseFailure,
+    required TResult Function() invalidTransaction,
   }) {
     return unexpected();
   }
@@ -131,6 +138,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? notFound,
     TResult? Function()? databaseFailure,
+    TResult? Function()? invalidTransaction,
   }) {
     return unexpected?.call();
   }
@@ -141,6 +149,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? notFound,
     TResult Function()? databaseFailure,
+    TResult Function()? invalidTransaction,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -155,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_DatabaseFailure value) databaseFailure,
+    required TResult Function(_InvalidTransaction value) invalidTransaction,
   }) {
     return unexpected(this);
   }
@@ -165,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_DatabaseFailure value)? databaseFailure,
+    TResult? Function(_InvalidTransaction value)? invalidTransaction,
   }) {
     return unexpected?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_DatabaseFailure value)? databaseFailure,
+    TResult Function(_InvalidTransaction value)? invalidTransaction,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -229,6 +241,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function() unexpected,
     required TResult Function() notFound,
     required TResult Function() databaseFailure,
+    required TResult Function() invalidTransaction,
   }) {
     return notFound();
   }
@@ -239,6 +252,7 @@ class _$_NotFound implements _NotFound {
     TResult? Function()? unexpected,
     TResult? Function()? notFound,
     TResult? Function()? databaseFailure,
+    TResult? Function()? invalidTransaction,
   }) {
     return notFound?.call();
   }
@@ -249,6 +263,7 @@ class _$_NotFound implements _NotFound {
     TResult Function()? unexpected,
     TResult Function()? notFound,
     TResult Function()? databaseFailure,
+    TResult Function()? invalidTransaction,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -263,6 +278,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_DatabaseFailure value) databaseFailure,
+    required TResult Function(_InvalidTransaction value) invalidTransaction,
   }) {
     return notFound(this);
   }
@@ -273,6 +289,7 @@ class _$_NotFound implements _NotFound {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_DatabaseFailure value)? databaseFailure,
+    TResult? Function(_InvalidTransaction value)? invalidTransaction,
   }) {
     return notFound?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_NotFound implements _NotFound {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_DatabaseFailure value)? databaseFailure,
+    TResult Function(_InvalidTransaction value)? invalidTransaction,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -337,6 +355,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     required TResult Function() unexpected,
     required TResult Function() notFound,
     required TResult Function() databaseFailure,
+    required TResult Function() invalidTransaction,
   }) {
     return databaseFailure();
   }
@@ -347,6 +366,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult? Function()? unexpected,
     TResult? Function()? notFound,
     TResult? Function()? databaseFailure,
+    TResult? Function()? invalidTransaction,
   }) {
     return databaseFailure?.call();
   }
@@ -357,6 +377,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function()? unexpected,
     TResult Function()? notFound,
     TResult Function()? databaseFailure,
+    TResult Function()? invalidTransaction,
     required TResult orElse(),
   }) {
     if (databaseFailure != null) {
@@ -371,6 +392,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_DatabaseFailure value) databaseFailure,
+    required TResult Function(_InvalidTransaction value) invalidTransaction,
   }) {
     return databaseFailure(this);
   }
@@ -381,6 +403,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_DatabaseFailure value)? databaseFailure,
+    TResult? Function(_InvalidTransaction value)? invalidTransaction,
   }) {
     return databaseFailure?.call(this);
   }
@@ -391,6 +414,7 @@ class _$_DatabaseFailure implements _DatabaseFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_DatabaseFailure value)? databaseFailure,
+    TResult Function(_InvalidTransaction value)? invalidTransaction,
     required TResult orElse(),
   }) {
     if (databaseFailure != null) {
@@ -402,4 +426,118 @@ class _$_DatabaseFailure implements _DatabaseFailure {
 
 abstract class _DatabaseFailure implements TransactionFailure {
   const factory _DatabaseFailure() = _$_DatabaseFailure;
+}
+
+/// @nodoc
+abstract class _$$_InvalidTransactionCopyWith<$Res> {
+  factory _$$_InvalidTransactionCopyWith(_$_InvalidTransaction value,
+          $Res Function(_$_InvalidTransaction) then) =
+      __$$_InvalidTransactionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidTransactionCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res, _$_InvalidTransaction>
+    implements _$$_InvalidTransactionCopyWith<$Res> {
+  __$$_InvalidTransactionCopyWithImpl(
+      _$_InvalidTransaction _value, $Res Function(_$_InvalidTransaction) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InvalidTransaction implements _InvalidTransaction {
+  const _$_InvalidTransaction();
+
+  @override
+  String toString() {
+    return 'TransactionFailure.invalidTransaction()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InvalidTransaction);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() notFound,
+    required TResult Function() databaseFailure,
+    required TResult Function() invalidTransaction,
+  }) {
+    return invalidTransaction();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? notFound,
+    TResult? Function()? databaseFailure,
+    TResult? Function()? invalidTransaction,
+  }) {
+    return invalidTransaction?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? notFound,
+    TResult Function()? databaseFailure,
+    TResult Function()? invalidTransaction,
+    required TResult orElse(),
+  }) {
+    if (invalidTransaction != null) {
+      return invalidTransaction();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_DatabaseFailure value) databaseFailure,
+    required TResult Function(_InvalidTransaction value) invalidTransaction,
+  }) {
+    return invalidTransaction(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NotFound value)? notFound,
+    TResult? Function(_DatabaseFailure value)? databaseFailure,
+    TResult? Function(_InvalidTransaction value)? invalidTransaction,
+  }) {
+    return invalidTransaction?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_DatabaseFailure value)? databaseFailure,
+    TResult Function(_InvalidTransaction value)? invalidTransaction,
+    required TResult orElse(),
+  }) {
+    if (invalidTransaction != null) {
+      return invalidTransaction(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidTransaction implements TransactionFailure {
+  const factory _InvalidTransaction() = _$_InvalidTransaction;
 }

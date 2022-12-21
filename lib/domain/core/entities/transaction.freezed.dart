@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Transaction {
   int get id => throw _privateConstructorUsedError;
   TransactionCategory get category => throw _privateConstructorUsedError;
-  Account get from => throw _privateConstructorUsedError;
+  Account? get from => throw _privateConstructorUsedError;
   Account? get to => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $TransactionCopyWith<$Res> {
   $Res call(
       {int id,
       TransactionCategory category,
-      Account from,
+      Account? from,
       Account? to,
       double amount,
       String? note,
@@ -55,7 +55,7 @@ abstract class $TransactionCopyWith<$Res> {
       DateTime? deletedAt});
 
   $TransactionCategoryCopyWith<$Res> get category;
-  $AccountCopyWith<$Res> get from;
+  $AccountCopyWith<$Res>? get from;
   $AccountCopyWith<$Res>? get to;
 }
 
@@ -74,7 +74,7 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
   $Res call({
     Object? id = null,
     Object? category = null,
-    Object? from = null,
+    Object? from = freezed,
     Object? to = freezed,
     Object? amount = null,
     Object? note = freezed,
@@ -94,10 +94,10 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as TransactionCategory,
-      from: null == from
+      from: freezed == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as Account,
+              as Account?,
       to: freezed == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
@@ -147,8 +147,12 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
 
   @override
   @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res> get from {
-    return $AccountCopyWith<$Res>(_value.from, (value) {
+  $AccountCopyWith<$Res>? get from {
+    if (_value.from == null) {
+      return null;
+    }
+
+    return $AccountCopyWith<$Res>(_value.from!, (value) {
       return _then(_value.copyWith(from: value) as $Val);
     });
   }
@@ -177,7 +181,7 @@ abstract class _$$_TransactionCopyWith<$Res>
   $Res call(
       {int id,
       TransactionCategory category,
-      Account from,
+      Account? from,
       Account? to,
       double amount,
       String? note,
@@ -191,7 +195,7 @@ abstract class _$$_TransactionCopyWith<$Res>
   @override
   $TransactionCategoryCopyWith<$Res> get category;
   @override
-  $AccountCopyWith<$Res> get from;
+  $AccountCopyWith<$Res>? get from;
   @override
   $AccountCopyWith<$Res>? get to;
 }
@@ -209,7 +213,7 @@ class __$$_TransactionCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? category = null,
-    Object? from = null,
+    Object? from = freezed,
     Object? to = freezed,
     Object? amount = null,
     Object? note = freezed,
@@ -229,10 +233,10 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as TransactionCategory,
-      from: null == from
+      from: freezed == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as Account,
+              as Account?,
       to: freezed == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
@@ -279,7 +283,7 @@ class _$_Transaction extends _Transaction {
   const _$_Transaction(
       {required this.id,
       required this.category,
-      required this.from,
+      this.from,
       this.to,
       required this.amount,
       this.note,
@@ -296,7 +300,7 @@ class _$_Transaction extends _Transaction {
   @override
   final TransactionCategory category;
   @override
-  final Account from;
+  final Account? from;
   @override
   final Account? to;
   @override
@@ -360,7 +364,7 @@ abstract class _Transaction extends Transaction {
   const factory _Transaction(
       {required final int id,
       required final TransactionCategory category,
-      required final Account from,
+      final Account? from,
       final Account? to,
       required final double amount,
       final String? note,
@@ -377,7 +381,7 @@ abstract class _Transaction extends Transaction {
   @override
   TransactionCategory get category;
   @override
-  Account get from;
+  Account? get from;
   @override
   Account? get to;
   @override

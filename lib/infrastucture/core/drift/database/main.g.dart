@@ -13,6 +13,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
   final String name;
   final String iconName;
   final String iconColorName;
+  final bool hidden;
   final TransactionType type;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -23,6 +24,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
       required this.name,
       required this.iconName,
       required this.iconColorName,
+      required this.hidden,
       required this.type,
       required this.createdAt,
       required this.updatedAt,
@@ -37,6 +39,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
     map['name'] = Variable<String>(name);
     map['icon_name'] = Variable<String>(iconName);
     map['icon_color_name'] = Variable<String>(iconColorName);
+    map['hidden'] = Variable<bool>(hidden);
     {
       final converter = $TCategoriesTable.$converter0;
       map['type'] = Variable<int>(converter.toSql(type));
@@ -58,6 +61,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
       name: Value(name),
       iconName: Value(iconName),
       iconColorName: Value(iconColorName),
+      hidden: Value(hidden),
       type: Value(type),
       createdAt: Value(createdAt),
       updatedAt: Value(updatedAt),
@@ -76,6 +80,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
       name: serializer.fromJson<String>(json['name']),
       iconName: serializer.fromJson<String>(json['iconName']),
       iconColorName: serializer.fromJson<String>(json['iconColorName']),
+      hidden: serializer.fromJson<bool>(json['hidden']),
       type: serializer.fromJson<TransactionType>(json['type']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
@@ -91,6 +96,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
       'name': serializer.toJson<String>(name),
       'iconName': serializer.toJson<String>(iconName),
       'iconColorName': serializer.toJson<String>(iconColorName),
+      'hidden': serializer.toJson<bool>(hidden),
       'type': serializer.toJson<TransactionType>(type),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
@@ -104,6 +110,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
           String? name,
           String? iconName,
           String? iconColorName,
+          bool? hidden,
           TransactionType? type,
           DateTime? createdAt,
           DateTime? updatedAt,
@@ -114,6 +121,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
         name: name ?? this.name,
         iconName: iconName ?? this.iconName,
         iconColorName: iconColorName ?? this.iconColorName,
+        hidden: hidden ?? this.hidden,
         type: type ?? this.type,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
@@ -127,6 +135,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
           ..write('name: $name, ')
           ..write('iconName: $iconName, ')
           ..write('iconColorName: $iconColorName, ')
+          ..write('hidden: $hidden, ')
           ..write('type: $type, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -137,7 +146,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
 
   @override
   int get hashCode => Object.hash(id, categoryId, name, iconName, iconColorName,
-      type, createdAt, updatedAt, deletedAt);
+      hidden, type, createdAt, updatedAt, deletedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -147,6 +156,7 @@ class TCategory extends DataClass implements Insertable<TCategory> {
           other.name == this.name &&
           other.iconName == this.iconName &&
           other.iconColorName == this.iconColorName &&
+          other.hidden == this.hidden &&
           other.type == this.type &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt &&
@@ -159,6 +169,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
   final Value<String> name;
   final Value<String> iconName;
   final Value<String> iconColorName;
+  final Value<bool> hidden;
   final Value<TransactionType> type;
   final Value<DateTime> createdAt;
   final Value<DateTime> updatedAt;
@@ -169,6 +180,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
     this.name = const Value.absent(),
     this.iconName = const Value.absent(),
     this.iconColorName = const Value.absent(),
+    this.hidden = const Value.absent(),
     this.type = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -180,6 +192,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
     required String name,
     required String iconName,
     required String iconColorName,
+    this.hidden = const Value.absent(),
     required TransactionType type,
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -194,6 +207,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
     Expression<String>? name,
     Expression<String>? iconName,
     Expression<String>? iconColorName,
+    Expression<bool>? hidden,
     Expression<int>? type,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
@@ -205,6 +219,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
       if (name != null) 'name': name,
       if (iconName != null) 'icon_name': iconName,
       if (iconColorName != null) 'icon_color_name': iconColorName,
+      if (hidden != null) 'hidden': hidden,
       if (type != null) 'type': type,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
@@ -218,6 +233,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
       Value<String>? name,
       Value<String>? iconName,
       Value<String>? iconColorName,
+      Value<bool>? hidden,
       Value<TransactionType>? type,
       Value<DateTime>? createdAt,
       Value<DateTime>? updatedAt,
@@ -228,6 +244,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
       name: name ?? this.name,
       iconName: iconName ?? this.iconName,
       iconColorName: iconColorName ?? this.iconColorName,
+      hidden: hidden ?? this.hidden,
       type: type ?? this.type,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -253,6 +270,9 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
     if (iconColorName.present) {
       map['icon_color_name'] = Variable<String>(iconColorName.value);
     }
+    if (hidden.present) {
+      map['hidden'] = Variable<bool>(hidden.value);
+    }
     if (type.present) {
       final converter = $TCategoriesTable.$converter0;
       map['type'] = Variable<int>(converter.toSql(type.value));
@@ -277,6 +297,7 @@ class TCategoriesCompanion extends UpdateCompanion<TCategory> {
           ..write('name: $name, ')
           ..write('iconName: $iconName, ')
           ..write('iconColorName: $iconColorName, ')
+          ..write('hidden: $hidden, ')
           ..write('type: $type, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -322,6 +343,14 @@ class $TCategoriesTable extends TCategories
   late final GeneratedColumn<String> iconColorName = GeneratedColumn<String>(
       'icon_color_name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _hiddenMeta = const VerificationMeta('hidden');
+  @override
+  late final GeneratedColumn<bool> hidden = GeneratedColumn<bool>(
+      'hidden', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: 'CHECK (hidden IN (0, 1))',
+      defaultValue: const Constant(false));
   final VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
   late final GeneratedColumnWithTypeConverter<TransactionType, int> type =
@@ -354,6 +383,7 @@ class $TCategoriesTable extends TCategories
         name,
         iconName,
         iconColorName,
+        hidden,
         type,
         createdAt,
         updatedAt,
@@ -397,6 +427,10 @@ class $TCategoriesTable extends TCategories
     } else if (isInserting) {
       context.missing(_iconColorNameMeta);
     }
+    if (data.containsKey('hidden')) {
+      context.handle(_hiddenMeta,
+          hidden.isAcceptableOrUnknown(data['hidden']!, _hiddenMeta));
+    }
     context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
@@ -429,6 +463,8 @@ class $TCategoriesTable extends TCategories
           .read(DriftSqlType.string, data['${effectivePrefix}icon_name'])!,
       iconColorName: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}icon_color_name'])!,
+      hidden: attachedDatabase.options.types
+          .read(DriftSqlType.bool, data['${effectivePrefix}hidden'])!,
       type: $TCategoriesTable.$converter0.fromSql(attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}type'])!),
       createdAt: attachedDatabase.options.types
@@ -1244,7 +1280,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
   final int id;
   final int categoryId;
   final TransactionType type;
-  final int from;
+  final int? from;
   final int? to;
   final double amount;
   final String? note;
@@ -1257,7 +1293,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
       {required this.id,
       required this.categoryId,
       required this.type,
-      required this.from,
+      this.from,
       this.to,
       required this.amount,
       this.note,
@@ -1275,7 +1311,9 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
       final converter = $TTransactionsTable.$converter0;
       map['type'] = Variable<int>(converter.toSql(type));
     }
-    map['from'] = Variable<int>(from);
+    if (!nullToAbsent || from != null) {
+      map['from'] = Variable<int>(from);
+    }
     if (!nullToAbsent || to != null) {
       map['to'] = Variable<int>(to);
     }
@@ -1300,7 +1338,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
       id: Value(id),
       categoryId: Value(categoryId),
       type: Value(type),
-      from: Value(from),
+      from: from == null && nullToAbsent ? const Value.absent() : Value(from),
       to: to == null && nullToAbsent ? const Value.absent() : Value(to),
       amount: Value(amount),
       note: note == null && nullToAbsent ? const Value.absent() : Value(note),
@@ -1323,7 +1361,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
       id: serializer.fromJson<int>(json['id']),
       categoryId: serializer.fromJson<int>(json['categoryId']),
       type: serializer.fromJson<TransactionType>(json['type']),
-      from: serializer.fromJson<int>(json['from']),
+      from: serializer.fromJson<int?>(json['from']),
       to: serializer.fromJson<int?>(json['to']),
       amount: serializer.fromJson<double>(json['amount']),
       note: serializer.fromJson<String?>(json['note']),
@@ -1341,7 +1379,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
       'id': serializer.toJson<int>(id),
       'categoryId': serializer.toJson<int>(categoryId),
       'type': serializer.toJson<TransactionType>(type),
-      'from': serializer.toJson<int>(from),
+      'from': serializer.toJson<int?>(from),
       'to': serializer.toJson<int?>(to),
       'amount': serializer.toJson<double>(amount),
       'note': serializer.toJson<String?>(note),
@@ -1357,7 +1395,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
           {int? id,
           int? categoryId,
           TransactionType? type,
-          int? from,
+          Value<int?> from = const Value.absent(),
           Value<int?> to = const Value.absent(),
           double? amount,
           Value<String?> note = const Value.absent(),
@@ -1370,7 +1408,7 @@ class TTransaction extends DataClass implements Insertable<TTransaction> {
         id: id ?? this.id,
         categoryId: categoryId ?? this.categoryId,
         type: type ?? this.type,
-        from: from ?? this.from,
+        from: from.present ? from.value : this.from,
         to: to.present ? to.value : this.to,
         amount: amount ?? this.amount,
         note: note.present ? note.value : this.note,
@@ -1424,7 +1462,7 @@ class TTransactionsCompanion extends UpdateCompanion<TTransaction> {
   final Value<int> id;
   final Value<int> categoryId;
   final Value<TransactionType> type;
-  final Value<int> from;
+  final Value<int?> from;
   final Value<int?> to;
   final Value<double> amount;
   final Value<String?> note;
@@ -1451,7 +1489,7 @@ class TTransactionsCompanion extends UpdateCompanion<TTransaction> {
     this.id = const Value.absent(),
     required int categoryId,
     required TransactionType type,
-    required int from,
+    this.from = const Value.absent(),
     this.to = const Value.absent(),
     required double amount,
     this.note = const Value.absent(),
@@ -1462,7 +1500,6 @@ class TTransactionsCompanion extends UpdateCompanion<TTransaction> {
     this.deletedAt = const Value.absent(),
   })  : categoryId = Value(categoryId),
         type = Value(type),
-        from = Value(from),
         amount = Value(amount),
         date = Value(date);
   static Insertable<TTransaction> custom({
@@ -1499,7 +1536,7 @@ class TTransactionsCompanion extends UpdateCompanion<TTransaction> {
       {Value<int>? id,
       Value<int>? categoryId,
       Value<TransactionType>? type,
-      Value<int>? from,
+      Value<int?>? from,
       Value<int?>? to,
       Value<double>? amount,
       Value<String?>? note,
@@ -1614,8 +1651,8 @@ class $TTransactionsTable extends TTransactions
   final VerificationMeta _fromMeta = const VerificationMeta('from');
   @override
   late final GeneratedColumn<int> from = GeneratedColumn<int>(
-      'from', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      'from', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   final VerificationMeta _toMeta = const VerificationMeta('to');
   @override
   late final GeneratedColumn<int> to = GeneratedColumn<int>(
@@ -1700,8 +1737,6 @@ class $TTransactionsTable extends TTransactions
     if (data.containsKey('from')) {
       context.handle(
           _fromMeta, from.isAcceptableOrUnknown(data['from']!, _fromMeta));
-    } else if (isInserting) {
-      context.missing(_fromMeta);
     }
     if (data.containsKey('to')) {
       context.handle(_toMeta, to.isAcceptableOrUnknown(data['to']!, _toMeta));
@@ -1757,7 +1792,7 @@ class $TTransactionsTable extends TTransactions
           .options.types
           .read(DriftSqlType.int, data['${effectivePrefix}type'])!),
       from: attachedDatabase.options.types
-          .read(DriftSqlType.int, data['${effectivePrefix}from'])!,
+          .read(DriftSqlType.int, data['${effectivePrefix}from']),
       to: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}to']),
       amount: attachedDatabase.options.types
@@ -2439,6 +2474,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $TBudgetsTable tBudgets = $TBudgetsTable(this);
   late final $TDataCurrenciesTable tDataCurrencies =
       $TDataCurrenciesTable(this);
+  late final AccountsDao accountsDao = AccountsDao(this as AppDatabase);
+  late final CategoriesDao categoriesDao = CategoriesDao(this as AppDatabase);
   late final TransactionsDao transactionsDao =
       TransactionsDao(this as AppDatabase);
   @override

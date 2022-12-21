@@ -5,13 +5,13 @@ class TTransactionData {
   TTransactionData({
     required this.transaction,
     required this.category,
-    required this.from,
+    this.from,
     this.to,
   });
 
   final TTransaction transaction;
   final TCategoryData category;
-  final TAccountData from;
+  final TAccountData? from;
   final TAccountData? to;
 
   factory TTransactionData.fromEntity(Transaction entity) {
@@ -20,7 +20,7 @@ class TTransactionData {
         id: entity.id,
         categoryId: entity.category.id,
         type: entity.type,
-        from: entity.from.id,
+        from: entity.from?.id,
         to: entity.to?.id,
         amount: entity.amount,
         note: entity.note,
@@ -31,7 +31,7 @@ class TTransactionData {
         deletedAt: entity.deletedAt,
       ),
       category: TCategoryData.fromEntity(entity.category),
-      from: TAccountData.fromEntity(entity.from),
+      from: entity.from != null ? TAccountData.fromEntity(entity.from!) : null,
       to: entity.to != null ? TAccountData.fromEntity(entity.to!) : null,
     );
   }
@@ -40,7 +40,7 @@ class TTransactionData {
     return Transaction(
       id: transaction.id,
       category: category.toEntity(),
-      from: from.toEntity(),
+      from: from?.toEntity(),
       to: to?.toEntity(),
       amount: transaction.amount,
       note: transaction.note,

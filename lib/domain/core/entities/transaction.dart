@@ -15,7 +15,7 @@ class Transaction with _$Transaction {
   const factory Transaction({
     required int id,
     required TransactionCategory category,
-    required Account from,
+    Account? from,
     Account? to,
     required double amount,
     String? note,

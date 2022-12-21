@@ -4,10 +4,15 @@ import 'package:moneymanager/domain/transaction/transaction_failure.dart';
 
 abstract class ITransactionRepository {
   /// Add a new transaction
+  ///
+  /// * If [TransactionType.income], [toAccountId] is required.
+  /// * If [TransactionType.expense], [fromAccountId] is required.
+  /// * If [TransactionType.transfer], [fromAccountId] and
+  /// [toAccountId] are required.
   Future<Either<TransactionFailure, Unit>> addTransaction({
     required int categoryId,
     required TransactionType type,
-    required int fromAccountId,
+    int? fromAccountId,
     int? toAccountId,
     required double amount,
     String? note,
@@ -16,6 +21,8 @@ abstract class ITransactionRepository {
   });
 
   /// Get all transactions
+  ///
+  /// can be filtered by [from], [to], [categoryId], [accountId], [type]
   Future<Either<TransactionFailure, List<Transaction>>> getTransactions({
     DateTime? from,
     DateTime? to,

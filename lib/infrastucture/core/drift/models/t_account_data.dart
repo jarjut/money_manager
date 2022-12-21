@@ -5,10 +5,12 @@ class TAccountData {
   const TAccountData({
     required this.account,
     required this.accountGroup,
+    this.balance = 0,
   });
 
   final TAccount account;
   final TAccountGroup accountGroup;
+  final double balance;
 
   factory TAccountData.fromEntity(Account entity) {
     return TAccountData(
@@ -32,6 +34,7 @@ class TAccountData {
         updatedAt: entity.accountGroup.updatedAt,
         deletedAt: entity.accountGroup.deletedAt,
       ),
+      balance: entity.balance,
     );
   }
 
@@ -43,6 +46,7 @@ class TAccountData {
       createdAt: account.createdAt,
       updatedAt: account.updatedAt,
       deletedAt: account.deletedAt,
+      balance: balance,
       accountGroup: AccountGroup(
         id: accountGroup.id,
         name: accountGroup.name,

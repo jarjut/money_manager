@@ -16,6 +16,7 @@ class TCategories extends Table {
   TextColumn get name => text()();
   TextColumn get iconName => text()();
   TextColumn get iconColorName => text()();
+  BoolColumn get hidden => boolean().withDefault(const Constant(false))();
   IntColumn get type => intEnum<TransactionType>()();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
@@ -48,7 +49,7 @@ class TTransactions extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get categoryId => integer()();
   IntColumn get type => intEnum<TransactionType>()();
-  IntColumn get from => integer()(); // Accounts.id
+  IntColumn get from => integer().nullable()(); // Accounts.id
   IntColumn get to => integer().nullable()(); // Accounts.id
   RealColumn get amount => real()();
   TextColumn get note => text().nullable()();

@@ -27,7 +27,7 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
   Future<TTransaction> addTransaction({
     required int categoryId,
     required TransactionType type,
-    required int fromAccountId,
+    int? fromAccountId,
     int? toAccountId,
     required double amount,
     String? note,
@@ -38,7 +38,7 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
       TTransactionsCompanion.insert(
         categoryId: categoryId,
         type: type,
-        from: fromAccountId,
+        from: Value(fromAccountId),
         to: Value(toAccountId),
         amount: amount,
         note: Value(note),
@@ -81,7 +81,8 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
         toGroup,
         to.id.equalsExp(toGroup.id),
       ),
-    ]);
+    ])
+      ..where(tTransactions.id.equals(id));
     final result = await query.getSingleOrNull();
     if (result == null) return null;
 
@@ -181,7 +182,11 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
 
   /// Update a transaction
   Future<void> updateTransaction(TTransaction transaction) async {
-    await update(tTransactions).replace(transaction);
+    await update(tTransactions).replace(
+      transaction.copyWith(
+        updatedAt: DateTime.now(),
+      ),
+    );
   }
 
   /// Delete a transaction
