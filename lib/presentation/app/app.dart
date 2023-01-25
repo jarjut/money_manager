@@ -1,10 +1,3 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,8 +20,14 @@ class _AppState extends State<App> {
     return DynamicColorBuilder(
       builder: (lightColorScheme, darkColorScheme) {
         return MaterialApp.router(
-          theme: AppTheme.light(lightColorScheme),
-          darkTheme: AppTheme.dark(darkColorScheme),
+          theme: AppTheme.themeData(
+            isDark: false,
+            colorScheme: lightColorScheme,
+          ),
+          darkTheme: AppTheme.themeData(
+            isDark: true,
+            colorScheme: darkColorScheme,
+          ),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
