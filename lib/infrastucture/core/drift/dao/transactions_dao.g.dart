@@ -2,13 +2,10 @@
 
 part of 'transactions_dao.dart';
 
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
+// ignore_for_file: type=lint
 mixin _$TransactionsDaoMixin on DatabaseAccessor<AppDatabase> {
   $TTransactionsTable get tTransactions => attachedDatabase.tTransactions;
   $TCategoriesTable get tCategories => attachedDatabase.tCategories;
-  $TAccountsTable get tAccounts => attachedDatabase.tAccounts;
   $TAccountGroupsTable get tAccountGroups => attachedDatabase.tAccountGroups;
+  $TAccountsTable get tAccounts => attachedDatabase.tAccounts;
 }

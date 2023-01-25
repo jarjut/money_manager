@@ -2,12 +2,9 @@
 
 part of 'accounts_dao.dart';
 
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
+// ignore_for_file: type=lint
 mixin _$AccountsDaoMixin on DatabaseAccessor<AppDatabase> {
-  $TAccountsTable get tAccounts => attachedDatabase.tAccounts;
   $TAccountGroupsTable get tAccountGroups => attachedDatabase.tAccountGroups;
+  $TAccountsTable get tAccounts => attachedDatabase.tAccounts;
   $TTransactionsTable get tTransactions => attachedDatabase.tTransactions;
 }

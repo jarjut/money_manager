@@ -2,10 +2,7 @@
 
 part of 'categories_dao.dart';
 
-// **************************************************************************
-// DaoGenerator
-// **************************************************************************
-
+// ignore_for_file: type=lint
 mixin _$CategoriesDaoMixin on DatabaseAccessor<AppDatabase> {
   $TCategoriesTable get tCategories => attachedDatabase.tCategories;
 }
