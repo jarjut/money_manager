@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   font_awesome_flutter: ^10.3.0
+  font_awesome_search: ^1.0.0
   fpdart: ^0.4.0
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0

@@ -10,6 +10,7 @@ class TCategoryData {
     required this.iconColorName,
     required this.type,
     required this.createdAt,
+    required this.hidden,
     required this.updatedAt,
     this.parentCategory,
     this.deletedAt,
@@ -22,6 +23,7 @@ class TCategoryData {
   final String iconColorName;
   final TransactionType type;
   final TCategoryData? parentCategory;
+  final bool hidden;
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime? deletedAt;
@@ -37,12 +39,28 @@ class TCategoryData {
       iconName: category.iconName,
       iconColorName: category.iconColorName,
       type: category.type,
+      hidden: category.hidden,
       createdAt: category.createdAt,
       updatedAt: category.updatedAt,
       deletedAt: category.deletedAt,
       parentCategory: parentCategory != null
           ? TCategoryData.fromTableClass(parentCategory)
           : null,
+    );
+  }
+
+  TCategory toTableClass() {
+    return TCategory(
+      id: id,
+      categoryId: categoryId,
+      name: name,
+      iconName: iconName,
+      iconColorName: iconColorName,
+      hidden: hidden,
+      type: type,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      deletedAt: deletedAt,
     );
   }
 
@@ -56,6 +74,7 @@ class TCategoryData {
       name: entity.name,
       iconName: entity.iconName,
       iconColorName: entity.iconColorName,
+      hidden: entity.hidden,
       type: entity.type,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
@@ -75,6 +94,7 @@ class TCategoryData {
       createdAt: createdAt,
       updatedAt: updatedAt,
       deletedAt: deletedAt,
+      hidden: hidden,
     );
   }
 }

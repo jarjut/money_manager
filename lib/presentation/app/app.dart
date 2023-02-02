@@ -1,6 +1,5 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:moneymanager/presentation/app/router/app_router.dart';
 import 'package:moneymanager/presentation/app/theme/theme.dart';
 import 'package:moneymanager/presentation/l10n/l10n.dart';
@@ -28,10 +27,7 @@ class _AppState extends State<App> {
             isDark: true,
             colorScheme: darkColorScheme,
           ),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-          ],
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           routerConfig: _router,
         );

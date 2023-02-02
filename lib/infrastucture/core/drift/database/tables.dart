@@ -47,10 +47,10 @@ class TAccounts extends Table {
 
 class TTransactions extends Table {
   IntColumn get id => integer().autoIncrement()();
-  IntColumn get categoryId => integer()();
+  IntColumn get categoryId => integer().references(TCategories, #id)();
   IntColumn get type => intEnum<TransactionType>()();
-  IntColumn get from => integer().nullable()(); // Accounts.id
-  IntColumn get to => integer().nullable()(); // Accounts.id
+  IntColumn get from => integer().nullable().references(TAccounts, #id)();
+  IntColumn get to => integer().nullable().references(TAccounts, #id)();
   RealColumn get amount => real()();
   TextColumn get note => text().nullable()();
   TextColumn get description => text().nullable()();
@@ -62,7 +62,7 @@ class TTransactions extends Table {
 
 class TBudgets extends Table {
   IntColumn get id => integer().autoIncrement()();
-  IntColumn get categoryId => integer()();
+  IntColumn get categoryId => integer().references(TCategories, #id)();
   IntColumn get amount => integer()();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();

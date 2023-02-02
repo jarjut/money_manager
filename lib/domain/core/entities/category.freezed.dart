@@ -23,6 +23,7 @@ mixin _$TransactionCategory {
   String get iconName => throw _privateConstructorUsedError;
   String get iconColorName => throw _privateConstructorUsedError;
   TransactionCategory? get parentCategory => throw _privateConstructorUsedError;
+  bool get hidden => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $TransactionCategoryCopyWith<$Res> {
       String iconName,
       String iconColorName,
       TransactionCategory? parentCategory,
+      bool hidden,
       DateTime createdAt,
       DateTime updatedAt,
       DateTime? deletedAt});
@@ -73,6 +75,7 @@ class _$TransactionCategoryCopyWithImpl<$Res, $Val extends TransactionCategory>
     Object? iconName = null,
     Object? iconColorName = null,
     Object? parentCategory = freezed,
+    Object? hidden = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? deletedAt = freezed,
@@ -106,6 +109,10 @@ class _$TransactionCategoryCopyWithImpl<$Res, $Val extends TransactionCategory>
           ? _value.parentCategory
           : parentCategory // ignore: cast_nullable_to_non_nullable
               as TransactionCategory?,
+      hidden: null == hidden
+          ? _value.hidden
+          : hidden // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -150,6 +157,7 @@ abstract class _$$_TransactionCategoryCopyWith<$Res>
       String iconName,
       String iconColorName,
       TransactionCategory? parentCategory,
+      bool hidden,
       DateTime createdAt,
       DateTime updatedAt,
       DateTime? deletedAt});
@@ -176,6 +184,7 @@ class __$$_TransactionCategoryCopyWithImpl<$Res>
     Object? iconName = null,
     Object? iconColorName = null,
     Object? parentCategory = freezed,
+    Object? hidden = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? deletedAt = freezed,
@@ -209,6 +218,10 @@ class __$$_TransactionCategoryCopyWithImpl<$Res>
           ? _value.parentCategory
           : parentCategory // ignore: cast_nullable_to_non_nullable
               as TransactionCategory?,
+      hidden: null == hidden
+          ? _value.hidden
+          : hidden // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -236,6 +249,7 @@ class _$_TransactionCategory extends _TransactionCategory {
       required this.iconName,
       required this.iconColorName,
       this.parentCategory,
+      this.hidden = false,
       required this.createdAt,
       required this.updatedAt,
       this.deletedAt})
@@ -256,6 +270,9 @@ class _$_TransactionCategory extends _TransactionCategory {
   @override
   final TransactionCategory? parentCategory;
   @override
+  @JsonKey()
+  final bool hidden;
+  @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
@@ -264,7 +281,7 @@ class _$_TransactionCategory extends _TransactionCategory {
 
   @override
   String toString() {
-    return 'TransactionCategory(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, parentCategory: $parentCategory, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'TransactionCategory(id: $id, categoryId: $categoryId, name: $name, type: $type, iconName: $iconName, iconColorName: $iconColorName, parentCategory: $parentCategory, hidden: $hidden, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
@@ -283,6 +300,7 @@ class _$_TransactionCategory extends _TransactionCategory {
                 other.iconColorName == iconColorName) &&
             (identical(other.parentCategory, parentCategory) ||
                 other.parentCategory == parentCategory) &&
+            (identical(other.hidden, hidden) || other.hidden == hidden) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -292,8 +310,19 @@ class _$_TransactionCategory extends _TransactionCategory {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, categoryId, name, type,
-      iconName, iconColorName, parentCategory, createdAt, updatedAt, deletedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      categoryId,
+      name,
+      type,
+      iconName,
+      iconColorName,
+      parentCategory,
+      hidden,
+      createdAt,
+      updatedAt,
+      deletedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -312,6 +341,7 @@ abstract class _TransactionCategory extends TransactionCategory {
       required final String iconName,
       required final String iconColorName,
       final TransactionCategory? parentCategory,
+      final bool hidden,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final DateTime? deletedAt}) = _$_TransactionCategory;
@@ -331,6 +361,8 @@ abstract class _TransactionCategory extends TransactionCategory {
   String get iconColorName;
   @override
   TransactionCategory? get parentCategory;
+  @override
+  bool get hidden;
   @override
   DateTime get createdAt;
   @override

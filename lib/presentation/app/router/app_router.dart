@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moneymanager/presentation/pages/accounts/accounts_page.dart';
@@ -12,6 +13,7 @@ final mainNavigatorKey = GlobalKey<NavigatorState>();
 class AppRouter {
   static GoRouter get router {
     return GoRouter(
+      debugLogDiagnostics: kDebugMode,
       navigatorKey: rootNavigatorKey,
       routes: [
         GoRoute(

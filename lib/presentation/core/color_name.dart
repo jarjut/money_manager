@@ -20,11 +20,7 @@ enum ColorName {
   yellow('Yellow', Color(0xFFFFFF00)),
   amber('Amber', Color(0xFFFFD740)),
   orange('Orange', Color(0xFFFFAB40)),
-  deepOrange('Deep orange', Color(0xFFFF6E40)),
-  brown('Brown', Color(0xFF795548)),
-  grey('Grey', Color(0xFF9E9E9E)),
-  blueGrey('Blue grey', Color(0xFF607D8B)),
-  darkGrey('Dark grey', Color(0xFF616161));
+  deepOrange('Deep orange', Color(0xFFFF6E40));
 
   const ColorName(this.name, this.color);
 

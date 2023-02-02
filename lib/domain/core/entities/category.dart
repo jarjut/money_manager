@@ -13,6 +13,7 @@ class TransactionCategory with _$TransactionCategory {
     required String iconName,
     required String iconColorName,
     TransactionCategory? parentCategory,
+    @Default(false) bool hidden,
     required DateTime createdAt,
     required DateTime updatedAt,
     DateTime? deletedAt,

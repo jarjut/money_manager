@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'package:moneymanager/domain/core/entities/entities.dart';
 import 'package:moneymanager/infrastucture/core/drift/dao/accounts_dao.dart';
 import 'package:moneymanager/infrastucture/core/drift/dao/categories_dao.dart';
@@ -13,6 +13,7 @@ import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
 part 'main.g.dart';
 part 'extension.dart';
+part 'populate.dart';
 
 /// {@template app_database}
 /// Main Database class.
@@ -64,72 +65,11 @@ class AppDatabase extends _$AppDatabase {
       beforeOpen: (details) async {
         if (details.wasCreated) {
           // Populate the database with initial data.
-          await _populateDatabase();
+          await _populateDatabase(this);
         }
         // enable foreign_keys before open database
         await customStatement('PRAGMA foreign_keys = ON');
       },
-    );
-  }
-
-  Future<void> _populateDatabase() async {
-    // Currencies
-    final currenciesJson =
-        await rootBundle.loadString('assets/currencies.json');
-    final currencies = jsonDecode(currenciesJson) as Map<String, dynamic>;
-
-    await batch((batch) {
-      batch.insertAll(
-        tDataCurrencies,
-        currencies.entries.map((data) {
-          final currency = data.value as Map<String, dynamic>;
-          return TDataCurrency.fromJson(currency);
-        }).toList(),
-      );
-    });
-
-    // Accounts Group
-    final cashGroup = await into(tAccountGroups).insertReturning(
-      const TAccountGroupsCompanion(
-        name: Value('Cash'),
-        origin: Value(true),
-      ),
-    );
-    await into(tAccounts).insert(
-      TAccountsCompanion.insert(
-        accountGroupId: cashGroup.id,
-        name: 'Cash',
-      ),
-    );
-    final accountGroup = await into(tAccountGroups).insertReturning(
-      const TAccountGroupsCompanion(
-        name: Value('Accounts'),
-        origin: Value(true),
-      ),
-    );
-    await into(tAccounts).insert(
-      TAccountsCompanion.insert(
-        accountGroupId: accountGroup.id,
-        name: 'Accounts',
-      ),
-    );
-    await into(tAccountGroups).insert(
-      const TAccountGroupsCompanion(
-        name: Value('Card'),
-        origin: Value(true),
-      ),
-    );
-    await into(tAccountGroups).insert(
-      const TAccountGroupsCompanion(
-        name: Value('Savings'),
-        origin: Value(true),
-      ),
-    );
-    await into(tAccountGroups).insert(
-      const TAccountGroupsCompanion(
-        name: Value('Investments'),
-        origin: Value(true),
-      ),
     );
   }
 }

@@ -56,7 +56,8 @@ class _MainPageState extends State<MainPage> {
     return index < 0 ? 0 : index;
   }
 
-  int get _currentIndex => _locationToNavIndex(GoRouter.of(context).location);
+  int get _currentIndex =>
+      _locationToNavIndex(GoRouterState.of(context).location);
 
   void _onItemTapped(BuildContext context, int index) {
     // Only navigate if the tab index has changed

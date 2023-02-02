@@ -155,13 +155,11 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
   ///
   /// This will not delete the account but mark it as deleted
   Future<void> softDeleteAccount(TAccount account) async {
-    return transaction(() async {
-      await update(tAccounts).replace(
-        account.copyWith(
-          updatedAt: DateTime.now(),
-          deletedAt: Value(DateTime.now()),
-        ),
-      );
-    });
+    await update(tAccounts).replace(
+      account.copyWith(
+        updatedAt: DateTime.now(),
+        deletedAt: Value(DateTime.now()),
+      ),
+    );
   }
 }

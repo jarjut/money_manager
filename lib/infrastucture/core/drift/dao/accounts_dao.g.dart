@@ -6,5 +6,6 @@ part of 'accounts_dao.dart';
 mixin _$AccountsDaoMixin on DatabaseAccessor<AppDatabase> {
   $TAccountGroupsTable get tAccountGroups => attachedDatabase.tAccountGroups;
   $TAccountsTable get tAccounts => attachedDatabase.tAccounts;
+  $TCategoriesTable get tCategories => attachedDatabase.tCategories;
   $TTransactionsTable get tTransactions => attachedDatabase.tTransactions;
 }
