@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
+import 'package:moneymanager/domain/core/entities/transaction.dart';
 import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
 import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
 
@@ -39,13 +40,33 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
     double? initialBalance,
   }) async {
     return transaction<TAccount>(() async {
+      // Add account
       final result = await into(tAccounts).insertReturning(
         TAccountsCompanion.insert(
           name: name,
           accountGroupId: accountGroupId,
         ),
       );
-      // TODO(jarjut): Add initial balance transaction
+      // Add transaction to add initial balance
+      if (initialBalance != null && initialBalance != 0) {
+        final type = initialBalance > 0
+            ? TransactionType.income
+            : TransactionType.expense;
+        final isIncome = type == TransactionType.income;
+        final amount = initialBalance.abs();
+        await into(tTransactions).insertReturning(
+          TTransactionsCompanion.insert(
+            categoryId: isIncome
+                ? categoryModBalanceIncomeId
+                : categoryModBalanceExpenseId,
+            type: type,
+            from: isIncome ? const Value.absent() : Value(result.id),
+            to: isIncome ? Value(result.id) : const Value.absent(),
+            amount: amount,
+            date: DateTime.now(),
+          ),
+        );
+      }
       return result;
     });
   }
@@ -137,16 +158,31 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
     double balanceChange = 0,
   }) async {
     return transaction(() async {
+      // Update account
       await update(tAccounts).replace(
         account.copyWith(
           updatedAt: DateTime.now(),
         ),
       );
+      // Add transaction to modify balance
       if (balanceChange != 0) {
-        // TODO(jarjut): Add balance change transaction
-
-        // if (balanceChange > 0) add income transaction
-        // else add expense transaction
+        final type = balanceChange > 0
+            ? TransactionType.income
+            : TransactionType.expense;
+        final isIncome = type == TransactionType.income;
+        final amount = balanceChange.abs();
+        await into(tTransactions).insertReturning(
+          TTransactionsCompanion.insert(
+            categoryId: isIncome
+                ? categoryModBalanceIncomeId
+                : categoryModBalanceExpenseId,
+            type: type,
+            from: isIncome ? const Value.absent() : Value(account.id),
+            to: isIncome ? Value(account.id) : const Value.absent(),
+            amount: amount,
+            date: DateTime.now(),
+          ),
+        );
       }
     });
   }
