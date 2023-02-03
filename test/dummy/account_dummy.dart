@@ -1,5 +1,5 @@
 import 'package:moneymanager/domain/core/entities/entities.dart';
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
 
 final dummyTAccount = TAccount(
   id: 1,

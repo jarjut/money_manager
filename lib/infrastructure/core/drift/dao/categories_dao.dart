@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
 import 'package:moneymanager/domain/core/entities/entities.dart';
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
-import 'package:moneymanager/infrastucture/core/drift/database/tables.dart';
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
+import 'package:moneymanager/infrastructure/core/drift/database/tables.dart';
 import 'package:moneymanager/presentation/core/color_name.dart';
 
 part 'categories_dao.g.dart';

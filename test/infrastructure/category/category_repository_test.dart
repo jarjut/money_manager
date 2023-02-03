@@ -5,9 +5,9 @@ import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:moneymanager/domain/category/category_failure.dart';
 import 'package:moneymanager/domain/core/entities/transaction.dart';
-import 'package:moneymanager/infrastucture/category/category_repository.dart';
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
-import 'package:moneymanager/infrastucture/core/drift/dao/categories_dao.dart';
+import 'package:moneymanager/infrastructure/category/category_repository.dart';
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
+import 'package:moneymanager/infrastructure/core/drift/dao/categories_dao.dart';
 
 import '../../dummy/category_dummy.dart';
 

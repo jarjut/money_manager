@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
-import 'package:moneymanager/infrastucture/core/drift/dao/accounts_dao.dart';
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
+import 'package:moneymanager/infrastructure/core/drift/dao/accounts_dao.dart';
 
 import '../../../../helper/database.dart';
 

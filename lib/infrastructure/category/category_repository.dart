@@ -4,8 +4,8 @@ import 'package:moneymanager/domain/category/category_failure.dart';
 import 'package:moneymanager/domain/category/i_category_repository.dart';
 import 'package:moneymanager/domain/core/entities/category.dart';
 import 'package:moneymanager/domain/core/entities/transaction.dart';
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart';
-import 'package:moneymanager/infrastucture/core/drift/dao/categories_dao.dart';
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
+import 'package:moneymanager/infrastructure/core/drift/dao/categories_dao.dart';
 
 @LazySingleton(as: ICategoryRepository)
 class CategoryRepository implements ICategoryRepository {

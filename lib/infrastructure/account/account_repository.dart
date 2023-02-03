@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:moneymanager/domain/account/account_failure.dart';
 import 'package:moneymanager/domain/account/i_account_repository.dart';
 import 'package:moneymanager/domain/core/entities/account.dart';
-import 'package:moneymanager/infrastucture/core/drift/dao/accounts_dao.dart';
-import 'package:moneymanager/infrastucture/core/drift/models/models.dart';
+import 'package:moneymanager/infrastructure/core/drift/dao/accounts_dao.dart';
+import 'package:moneymanager/infrastructure/core/drift/models/models.dart';
 
 @LazySingleton(as: IAccountRepository)
 class AccountRepository implements IAccountRepository {

@@ -10,20 +10,21 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:moneymanager/domain/account/i_account_repository.dart' as _i9;
 import 'package:moneymanager/domain/category/i_category_repository.dart' as _i5;
 import 'package:moneymanager/domain/transaction/transaction.dart' as _i11;
-import 'package:moneymanager/infrastucture/account/account_repository.dart'
+import 'package:moneymanager/infrastructure/account/account_repository.dart'
     as _i10;
-import 'package:moneymanager/infrastucture/category/category_repository.dart'
+import 'package:moneymanager/infrastructure/category/category_repository.dart'
     as _i6;
-import 'package:moneymanager/infrastucture/core/app_database_module.dart'
+import 'package:moneymanager/infrastructure/core/app_database_module.dart'
     as _i13;
-import 'package:moneymanager/infrastucture/core/drift/app_database.dart' as _i3;
-import 'package:moneymanager/infrastucture/core/drift/dao/accounts_dao.dart'
+import 'package:moneymanager/infrastructure/core/drift/app_database.dart'
+    as _i3;
+import 'package:moneymanager/infrastructure/core/drift/dao/accounts_dao.dart'
     as _i8;
-import 'package:moneymanager/infrastucture/core/drift/dao/categories_dao.dart'
+import 'package:moneymanager/infrastructure/core/drift/dao/categories_dao.dart'
     as _i4;
-import 'package:moneymanager/infrastucture/core/drift/dao/transactions_dao.dart'
+import 'package:moneymanager/infrastructure/core/drift/dao/transactions_dao.dart'
     as _i7;
-import 'package:moneymanager/infrastucture/transaction/transaction_repository.dart'
+import 'package:moneymanager/infrastructure/transaction/transaction_repository.dart'
     as _i12;
 
 /// ignore_for_file: unnecessary_lambdas
