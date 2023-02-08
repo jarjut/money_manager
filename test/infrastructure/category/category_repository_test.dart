@@ -13,7 +13,7 @@ import '../../dummy/category_dummy.dart';
 
 class MockCategoriesDao extends Mock implements CategoriesDao {}
 
-class FakeTCategories extends Fake implements TCategoryData {}
+class FakeTCategories extends Fake implements TCategory {}
 
 void main() {
   group('CategoryRepository', () {
@@ -34,7 +34,7 @@ void main() {
       test('should return Right(unit) on success', () async {
         // arrange
         when(
-          () => mockDao.createCategory(
+          () => mockDao.addCategory(
             name: any(named: 'name'),
             type: any(named: 'type'),
             parentId: any(named: 'parentId'),
@@ -57,7 +57,7 @@ void main() {
           () async {
         // arrange
         when(
-          () => mockDao.createCategory(
+          () => mockDao.addCategory(
             name: any(named: 'name'),
             type: any(named: 'type'),
             parentId: any(named: 'parentId'),

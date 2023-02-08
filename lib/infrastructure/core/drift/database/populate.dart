@@ -56,7 +56,7 @@ Future<void> _populateDatabase(AppDatabase db) async {
         const TAccountsCompanion(
           id: Value(2),
           accountGroupId: Value(2),
-          name: Value('Accounts'),
+          name: Value('Account'),
           origin: Value(true),
         ),
       ],
@@ -97,7 +97,6 @@ Future<void> _populateDatabase(AppDatabase db) async {
         iconName: 'solid question-circle',
         iconColorName: 'Deep orange',
         type: TransactionType.income,
-        hidden: const Value(true),
       ),
       TCategoriesCompanion.insert(
         id: const Value(categoryOtherExpenseId), // 5
@@ -105,7 +104,6 @@ Future<void> _populateDatabase(AppDatabase db) async {
         iconName: 'solid question-circle',
         iconColorName: 'Deep orange',
         type: TransactionType.expense,
-        hidden: const Value(true),
       ),
 
       // ====== Income categories ======

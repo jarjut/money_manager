@@ -16,7 +16,7 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase>
   CategoriesDao(super.db);
 
   /// Create new category
-  Future<TCategory> createCategory({
+  Future<TCategory> addCategory({
     required String name,
     required TransactionType type,
     int? parentId,
@@ -36,7 +36,7 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase>
   }
 
   /// Get single category
-  Future<TCategoryData> getCategory(int id) async {
+  Future<TCategoryData?> getCategory(int id) async {
     final parentCategories = alias(tCategories, 'parent_categories');
     final query = select(tCategories).join([
       leftOuterJoin(
@@ -44,10 +44,12 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase>
         tCategories.categoryId.equalsExp(parentCategories.id),
       ),
     ])
+      ..where(tCategories.deletedAt.isNull())
       ..where(tCategories.id.equals(id));
-    final result = await query.getSingle();
+    final result = await query.getSingleOrNull();
+    if (result == null) return null;
     final category = result.readTable(tCategories);
-    final parentCategory = result.readTable(parentCategories);
+    final parentCategory = result.readTableOrNull(parentCategories);
     return TCategoryData.fromTableClass(category, parentCategory);
   }
 
@@ -69,27 +71,27 @@ class CategoriesDao extends DatabaseAccessor<AppDatabase>
     final result = await query.get();
     return result.map((row) {
       final category = row.readTable(tCategories);
-      final parentCategory = row.readTable(parentCategories);
+      final parentCategory = row.readTableOrNull(parentCategories);
       return TCategoryData.fromTableClass(category, parentCategory);
     }).toList();
   }
 
   /// Update category
-  Future<void> updateCategory(TCategoryData category) async {
+  Future<void> updateCategory(TCategory category) async {
     await update(tCategories).replace(
-      category.toTableClass().copyWith(
-            updatedAt: DateTime.now(),
-          ),
+      category.copyWith(
+        updatedAt: DateTime.now(),
+      ),
     );
   }
 
   /// Soft delete category
-  Future<void> softDeleteCategory(TCategoryData category) async {
+  Future<void> softDeleteCategory(TCategory category) async {
     await update(tCategories).replace(
-      category.toTableClass().copyWith(
-            updatedAt: DateTime.now(),
-            deletedAt: Value(DateTime.now()),
-          ),
+      category.copyWith(
+        updatedAt: DateTime.now(),
+        deletedAt: Value(DateTime.now()),
+      ),
     );
   }
 }

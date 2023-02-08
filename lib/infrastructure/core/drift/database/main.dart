@@ -35,7 +35,9 @@ part 'populate.dart';
 )
 class AppDatabase extends _$AppDatabase {
   /// {@macro app_database}
-  AppDatabase(super.executor);
+  AppDatabase(super.executor, {this.populateDatabase = true});
+
+  final bool populateDatabase;
 
   @override
   int get schemaVersion => 1;
@@ -65,7 +67,9 @@ class AppDatabase extends _$AppDatabase {
       beforeOpen: (details) async {
         if (details.wasCreated) {
           // Populate the database with initial data.
-          await _populateDatabase(this);
+          if (populateDatabase) {
+            await _populateDatabase(this);
+          }
         }
         // enable foreign_keys before open database
         await customStatement('PRAGMA foreign_keys = ON');

@@ -65,21 +65,21 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
         parentCategories,
         tCategories.categoryId.equalsExp(parentCategories.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         from,
         tTransactions.from.equalsExp(from.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         fromGroup,
-        from.id.equalsExp(fromGroup.id),
+        from.accountGroupId.equalsExp(fromGroup.id),
       ),
       leftOuterJoin(
         to,
         tTransactions.to.equalsExp(to.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         toGroup,
-        to.id.equalsExp(toGroup.id),
+        to.accountGroupId.equalsExp(toGroup.id),
       ),
     ])
       ..where(tTransactions.id.equals(id));
@@ -89,14 +89,16 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
     final transaction = result.readTable(tTransactions);
     final category = result.readTable(tCategories);
     final parentCategory = result.readTableOrNull(parentCategories);
-    final fromAccount = result.readTable(from);
-    final fromAccountGroup = result.readTable(fromGroup);
+    final fromAccount = result.readTableOrNull(from);
+    final fromAccountGroup = result.readTableOrNull(fromGroup);
     final toAccount = result.readTableOrNull(to);
     final toAccountGroup = result.readTableOrNull(toGroup);
     return TTransactionData(
       transaction: transaction,
       category: TCategoryData.fromTableClass(category, parentCategory),
-      from: TAccountData(account: fromAccount, accountGroup: fromAccountGroup),
+      from: fromAccount != null
+          ? TAccountData(account: fromAccount, accountGroup: fromAccountGroup!)
+          : null,
       to: toAccount != null
           ? TAccountData(account: toAccount, accountGroup: toAccountGroup!)
           : null,
@@ -125,21 +127,21 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
         parentCategories,
         tCategories.categoryId.equalsExp(parentCategories.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         from,
         tTransactions.from.equalsExp(from.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         fromGroup,
-        from.id.equalsExp(fromGroup.id),
+        from.accountGroupId.equalsExp(fromGroup.id),
       ),
       leftOuterJoin(
         to,
         tTransactions.to.equalsExp(to.id),
       ),
-      innerJoin(
+      leftOuterJoin(
         toGroup,
-        to.id.equalsExp(toGroup.id),
+        to.accountGroupId.equalsExp(toGroup.id),
       ),
     ]);
     if (fromDate != null) {
@@ -152,27 +154,35 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
       query.where(tTransactions.categoryId.equals(categoryId));
     }
     if (accountId != null) {
-      query.where(tTransactions.from.equals(accountId));
+      query.where(
+        tTransactions.from.equals(accountId) |
+            tTransactions.to.equals(accountId),
+      );
     }
     if (type != null) {
       query.where(tTransactions.type.equalsValue(type));
     }
+    query.orderBy([
+      OrderingTerm(expression: tTransactions.date, mode: OrderingMode.desc),
+    ]);
     final result = await query.get();
     return result.map((row) {
       final transaction = row.readTable(tTransactions);
       final category = row.readTable(tCategories);
       final parentCategory = row.readTableOrNull(parentCategories);
-      final fromAccount = row.readTable(from);
-      final fromAccountGroup = row.readTable(fromGroup);
+      final fromAccount = row.readTableOrNull(from);
+      final fromAccountGroup = row.readTableOrNull(fromGroup);
       final toAccount = row.readTableOrNull(to);
       final toAccountGroup = row.readTableOrNull(toGroup);
       return TTransactionData(
         transaction: transaction,
         category: TCategoryData.fromTableClass(category, parentCategory),
-        from: TAccountData(
-          account: fromAccount,
-          accountGroup: fromAccountGroup,
-        ),
+        from: fromAccount != null
+            ? TAccountData(
+                account: fromAccount,
+                accountGroup: fromAccountGroup!,
+              )
+            : null,
         to: toAccount != null
             ? TAccountData(account: toAccount, accountGroup: toAccountGroup!)
             : null,

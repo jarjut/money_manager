@@ -95,7 +95,7 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
     ])
       ..where(tAccounts.deletedAt.isNull())
       ..addColumns([expensesSum, incomesSum])
-      ..groupBy([expenses.id, incomes.id]);
+      ..groupBy([tAccounts.id]);
 
     final result = await query.get();
     return result.map((row) {
@@ -136,7 +136,7 @@ class AccountsDao extends DatabaseAccessor<AppDatabase>
       ..where(tAccounts.deletedAt.isNull())
       ..where(tAccounts.id.equals(id))
       ..addColumns([expensesSum, incomesSum])
-      ..groupBy([expenses.id, incomes.id]);
+      ..groupBy([tAccounts.id]);
 
     final result = await query.getSingleOrNull();
     if (result == null) return null;

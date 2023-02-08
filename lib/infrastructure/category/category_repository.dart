@@ -22,7 +22,7 @@ class CategoryRepository implements ICategoryRepository {
     String? iconColorName,
   }) async {
     try {
-      await _categoriesDao.createCategory(
+      await _categoriesDao.addCategory(
         name: name,
         type: type,
         parentId: categoryId,
@@ -53,6 +53,9 @@ class CategoryRepository implements ICategoryRepository {
   ) async {
     try {
       final result = await _categoriesDao.getCategory(id);
+      if (result == null) {
+        return const Left(CategoryFailure.notFound());
+      }
       return Right(result.toEntity());
     } catch (e) {
       return const Left(CategoryFailure.databaseFailure());
@@ -64,7 +67,8 @@ class CategoryRepository implements ICategoryRepository {
     TransactionCategory category,
   ) async {
     try {
-      await _categoriesDao.updateCategory(TCategoryData.fromEntity(category));
+      await _categoriesDao
+          .updateCategory(TCategoryData.fromEntity(category).toTableClass());
       return const Right(unit);
     } catch (e) {
       return const Left(CategoryFailure.databaseFailure());
@@ -76,8 +80,9 @@ class CategoryRepository implements ICategoryRepository {
     TransactionCategory category,
   ) async {
     try {
-      await _categoriesDao
-          .softDeleteCategory(TCategoryData.fromEntity(category));
+      await _categoriesDao.softDeleteCategory(
+        TCategoryData.fromEntity(category).toTableClass(),
+      );
       return const Right(unit);
     } catch (e) {
       return const Left(CategoryFailure.databaseFailure());
