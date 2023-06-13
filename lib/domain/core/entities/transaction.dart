@@ -15,15 +15,15 @@ class Transaction with _$Transaction {
   const factory Transaction({
     required int id,
     required TransactionCategory category,
-    Account? from,
-    Account? to,
     required double amount,
-    String? note,
-    String? description,
     required TransactionType type,
     required DateTime date,
     required DateTime createdAt,
     required DateTime updatedAt,
+    Account? from,
+    Account? to,
+    String? note,
+    String? description,
     DateTime? deletedAt,
   }) = _Transaction;
 

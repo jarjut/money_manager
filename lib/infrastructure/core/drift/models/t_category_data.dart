@@ -4,7 +4,6 @@ import 'package:moneymanager/infrastructure/core/drift/app_database.dart';
 class TCategoryData {
   const TCategoryData({
     required this.id,
-    this.categoryId,
     required this.name,
     required this.iconName,
     required this.iconColorName,
@@ -12,6 +11,7 @@ class TCategoryData {
     required this.createdAt,
     required this.hidden,
     required this.updatedAt,
+    this.categoryId,
     this.parentCategory,
     this.deletedAt,
   });

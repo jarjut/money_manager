@@ -7,9 +7,9 @@ class AccountGroup with _$AccountGroup {
   const factory AccountGroup({
     required int id,
     required String name,
-    @Default(false) bool origin,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @Default(false) bool origin,
     DateTime? deletedAt,
   }) = _AccountGroup;
 

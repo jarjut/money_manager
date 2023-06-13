@@ -9,9 +9,9 @@ class Account with _$Account {
     required int id,
     required AccountGroup accountGroup,
     required String name,
-    @Default(false) bool origin,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @Default(false) bool origin,
     @Default(0) double balance,
     DateTime? deletedAt,
   }) = _Account;

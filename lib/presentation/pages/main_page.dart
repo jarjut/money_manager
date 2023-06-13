@@ -39,8 +39,7 @@ const navItems = [
 
 class MainPage extends StatefulWidget {
   const MainPage({
-    super.key,
-    required this.child,
+    required this.child, super.key,
   });
 
   final Widget child;

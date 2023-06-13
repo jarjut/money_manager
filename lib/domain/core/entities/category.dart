@@ -7,15 +7,15 @@ part 'category.freezed.dart';
 class TransactionCategory with _$TransactionCategory {
   const factory TransactionCategory({
     required int id,
-    int? categoryId,
     required String name,
     required TransactionType type,
     required String iconName,
     required String iconColorName,
-    TransactionCategory? parentCategory,
-    @Default(false) bool hidden,
     required DateTime createdAt,
     required DateTime updatedAt,
+    int? categoryId,
+    TransactionCategory? parentCategory,
+    @Default(false) bool hidden,
     DateTime? deletedAt,
   }) = _TransactionCategory;
 

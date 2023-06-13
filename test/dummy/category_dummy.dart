@@ -56,7 +56,6 @@ final dummyParentCategory = TransactionCategory(
   type: TransactionType.expense,
   createdAt: DateTime(2022, 2, 2),
   updatedAt: DateTime(2022, 2, 2),
-  hidden: false,
 );
 
 final dummyCategory = TransactionCategory(
@@ -69,5 +68,4 @@ final dummyCategory = TransactionCategory(
   type: TransactionType.expense,
   createdAt: DateTime(2022, 2, 2),
   updatedAt: DateTime(2022, 2, 2),
-  hidden: false,
 );

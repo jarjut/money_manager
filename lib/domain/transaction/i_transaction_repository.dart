@@ -12,12 +12,10 @@ abstract class ITransactionRepository {
   Future<Either<TransactionFailure, Unit>> addTransaction({
     required int categoryId,
     required TransactionType type,
-    int? fromAccountId,
+    required double amount, required DateTime date, int? fromAccountId,
     int? toAccountId,
-    required double amount,
     String? note,
     String? description,
-    required DateTime date,
   });
 
   /// Get all transactions

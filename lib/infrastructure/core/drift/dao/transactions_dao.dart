@@ -27,12 +27,10 @@ class TransactionsDao extends DatabaseAccessor<AppDatabase>
   Future<TTransaction> addTransaction({
     required int categoryId,
     required TransactionType type,
-    int? fromAccountId,
+    required double amount, required DateTime date, int? fromAccountId,
     int? toAccountId,
-    required double amount,
     String? note,
     String? description,
-    required DateTime date,
   }) async {
     final result = await into(tTransactions).insertReturning(
       TTransactionsCompanion.insert(
