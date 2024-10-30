@@ -12,20 +12,22 @@ part of 'account.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Account {
   int get id => throw _privateConstructorUsedError;
   AccountGroup get accountGroup => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  bool get origin => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  bool get origin => throw _privateConstructorUsedError;
   double get balance => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountCopyWith<Account> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -38,9 +40,9 @@ abstract class $AccountCopyWith<$Res> {
       {int id,
       AccountGroup accountGroup,
       String name,
-      bool origin,
       DateTime createdAt,
       DateTime updatedAt,
+      bool origin,
       double balance,
       DateTime? deletedAt});
 
@@ -57,15 +59,17 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? accountGroup = null,
     Object? name = null,
-    Object? origin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? origin = null,
     Object? balance = null,
     Object? deletedAt = freezed,
   }) {
@@ -82,10 +86,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      origin: null == origin
-          ? _value.origin
-          : origin // ignore: cast_nullable_to_non_nullable
-              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -94,6 +94,10 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      origin: null == origin
+          ? _value.origin
+          : origin // ignore: cast_nullable_to_non_nullable
+              as bool,
       balance: null == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
@@ -105,6 +109,8 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     ) as $Val);
   }
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountGroupCopyWith<$Res> get accountGroup {
@@ -115,19 +121,19 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
 }
 
 /// @nodoc
-abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
-  factory _$$_AccountCopyWith(
-          _$_Account value, $Res Function(_$_Account) then) =
-      __$$_AccountCopyWithImpl<$Res>;
+abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
+  factory _$$AccountImplCopyWith(
+          _$AccountImpl value, $Res Function(_$AccountImpl) then) =
+      __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       AccountGroup accountGroup,
       String name,
-      bool origin,
       DateTime createdAt,
       DateTime updatedAt,
+      bool origin,
       double balance,
       DateTime? deletedAt});
 
@@ -136,25 +142,28 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AccountCopyWithImpl<$Res>
-    extends _$AccountCopyWithImpl<$Res, _$_Account>
-    implements _$$_AccountCopyWith<$Res> {
-  __$$_AccountCopyWithImpl(_$_Account _value, $Res Function(_$_Account) _then)
+class __$$AccountImplCopyWithImpl<$Res>
+    extends _$AccountCopyWithImpl<$Res, _$AccountImpl>
+    implements _$$AccountImplCopyWith<$Res> {
+  __$$AccountImplCopyWithImpl(
+      _$AccountImpl _value, $Res Function(_$AccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? accountGroup = null,
     Object? name = null,
-    Object? origin = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? origin = null,
     Object? balance = null,
     Object? deletedAt = freezed,
   }) {
-    return _then(_$_Account(
+    return _then(_$AccountImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -167,10 +176,6 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      origin: null == origin
-          ? _value.origin
-          : origin // ignore: cast_nullable_to_non_nullable
-              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -179,6 +184,10 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      origin: null == origin
+          ? _value.origin
+          : origin // ignore: cast_nullable_to_non_nullable
+              as bool,
       balance: null == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
@@ -193,14 +202,14 @@ class __$$_AccountCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Account extends _Account {
-  const _$_Account(
+class _$AccountImpl extends _Account {
+  const _$AccountImpl(
       {required this.id,
       required this.accountGroup,
       required this.name,
-      this.origin = false,
       required this.createdAt,
       required this.updatedAt,
+      this.origin = false,
       this.balance = 0,
       this.deletedAt})
       : super._();
@@ -212,12 +221,12 @@ class _$_Account extends _Account {
   @override
   final String name;
   @override
-  @JsonKey()
-  final bool origin;
-  @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  @JsonKey()
+  final bool origin;
   @override
   @JsonKey()
   final double balance;
@@ -226,37 +235,39 @@ class _$_Account extends _Account {
 
   @override
   String toString() {
-    return 'Account(id: $id, accountGroup: $accountGroup, name: $name, origin: $origin, createdAt: $createdAt, updatedAt: $updatedAt, balance: $balance, deletedAt: $deletedAt)';
+    return 'Account(id: $id, accountGroup: $accountGroup, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, origin: $origin, balance: $balance, deletedAt: $deletedAt)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Account &&
+            other is _$AccountImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.accountGroup, accountGroup) ||
                 other.accountGroup == accountGroup) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.origin, origin) || other.origin == origin) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
+            (identical(other.origin, origin) || other.origin == origin) &&
             (identical(other.balance, balance) || other.balance == balance) &&
             (identical(other.deletedAt, deletedAt) ||
                 other.deletedAt == deletedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, accountGroup, name, origin,
-      createdAt, updatedAt, balance, deletedAt);
+  int get hashCode => Object.hash(runtimeType, id, accountGroup, name,
+      createdAt, updatedAt, origin, balance, deletedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
-      __$$_AccountCopyWithImpl<_$_Account>(this, _$identity);
+  _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
+      __$$AccountImplCopyWithImpl<_$AccountImpl>(this, _$identity);
 }
 
 abstract class _Account extends Account {
@@ -264,11 +275,11 @@ abstract class _Account extends Account {
       {required final int id,
       required final AccountGroup accountGroup,
       required final String name,
-      final bool origin,
       required final DateTime createdAt,
       required final DateTime updatedAt,
+      final bool origin,
       final double balance,
-      final DateTime? deletedAt}) = _$_Account;
+      final DateTime? deletedAt}) = _$AccountImpl;
   const _Account._() : super._();
 
   @override
@@ -278,17 +289,20 @@ abstract class _Account extends Account {
   @override
   String get name;
   @override
-  bool get origin;
-  @override
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
   @override
+  bool get origin;
+  @override
   double get balance;
   @override
   DateTime? get deletedAt;
+
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

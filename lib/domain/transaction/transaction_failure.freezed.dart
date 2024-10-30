@@ -12,7 +12,7 @@ part of 'transaction_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TransactionFailure {
@@ -84,28 +84,34 @@ class _$TransactionFailureCopyWithImpl<$Res, $Val extends TransactionFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TransactionFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$TransactionFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransactionFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -113,9 +119,9 @@ class _$_Unexpected implements _Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -197,29 +203,32 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements TransactionFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NotFoundCopyWith<$Res> {
-  factory _$$_NotFoundCopyWith(
-          _$_NotFound value, $Res Function(_$_NotFound) then) =
-      __$$_NotFoundCopyWithImpl<$Res>;
+abstract class _$$NotFoundImplCopyWith<$Res> {
+  factory _$$NotFoundImplCopyWith(
+          _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
+      __$$NotFoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NotFoundCopyWithImpl<$Res>
-    extends _$TransactionFailureCopyWithImpl<$Res, _$_NotFound>
-    implements _$$_NotFoundCopyWith<$Res> {
-  __$$_NotFoundCopyWithImpl(
-      _$_NotFound _value, $Res Function(_$_NotFound) _then)
+class __$$NotFoundImplCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res, _$NotFoundImpl>
+    implements _$$NotFoundImplCopyWith<$Res> {
+  __$$NotFoundImplCopyWithImpl(
+      _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransactionFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_NotFound implements _NotFound {
-  const _$_NotFound();
+class _$NotFoundImpl implements _NotFound {
+  const _$NotFoundImpl();
 
   @override
   String toString() {
@@ -227,9 +236,9 @@ class _$_NotFound implements _NotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NotFound);
+        (other.runtimeType == runtimeType && other is _$NotFoundImpl);
   }
 
   @override
@@ -311,29 +320,32 @@ class _$_NotFound implements _NotFound {
 }
 
 abstract class _NotFound implements TransactionFailure {
-  const factory _NotFound() = _$_NotFound;
+  const factory _NotFound() = _$NotFoundImpl;
 }
 
 /// @nodoc
-abstract class _$$_DatabaseFailureCopyWith<$Res> {
-  factory _$$_DatabaseFailureCopyWith(
-          _$_DatabaseFailure value, $Res Function(_$_DatabaseFailure) then) =
-      __$$_DatabaseFailureCopyWithImpl<$Res>;
+abstract class _$$DatabaseFailureImplCopyWith<$Res> {
+  factory _$$DatabaseFailureImplCopyWith(_$DatabaseFailureImpl value,
+          $Res Function(_$DatabaseFailureImpl) then) =
+      __$$DatabaseFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DatabaseFailureCopyWithImpl<$Res>
-    extends _$TransactionFailureCopyWithImpl<$Res, _$_DatabaseFailure>
-    implements _$$_DatabaseFailureCopyWith<$Res> {
-  __$$_DatabaseFailureCopyWithImpl(
-      _$_DatabaseFailure _value, $Res Function(_$_DatabaseFailure) _then)
+class __$$DatabaseFailureImplCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res, _$DatabaseFailureImpl>
+    implements _$$DatabaseFailureImplCopyWith<$Res> {
+  __$$DatabaseFailureImplCopyWithImpl(
+      _$DatabaseFailureImpl _value, $Res Function(_$DatabaseFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransactionFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_DatabaseFailure implements _DatabaseFailure {
-  const _$_DatabaseFailure();
+class _$DatabaseFailureImpl implements _DatabaseFailure {
+  const _$DatabaseFailureImpl();
 
   @override
   String toString() {
@@ -341,9 +353,9 @@ class _$_DatabaseFailure implements _DatabaseFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DatabaseFailure);
+        (other.runtimeType == runtimeType && other is _$DatabaseFailureImpl);
   }
 
   @override
@@ -425,29 +437,32 @@ class _$_DatabaseFailure implements _DatabaseFailure {
 }
 
 abstract class _DatabaseFailure implements TransactionFailure {
-  const factory _DatabaseFailure() = _$_DatabaseFailure;
+  const factory _DatabaseFailure() = _$DatabaseFailureImpl;
 }
 
 /// @nodoc
-abstract class _$$_InvalidTransactionCopyWith<$Res> {
-  factory _$$_InvalidTransactionCopyWith(_$_InvalidTransaction value,
-          $Res Function(_$_InvalidTransaction) then) =
-      __$$_InvalidTransactionCopyWithImpl<$Res>;
+abstract class _$$InvalidTransactionImplCopyWith<$Res> {
+  factory _$$InvalidTransactionImplCopyWith(_$InvalidTransactionImpl value,
+          $Res Function(_$InvalidTransactionImpl) then) =
+      __$$InvalidTransactionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InvalidTransactionCopyWithImpl<$Res>
-    extends _$TransactionFailureCopyWithImpl<$Res, _$_InvalidTransaction>
-    implements _$$_InvalidTransactionCopyWith<$Res> {
-  __$$_InvalidTransactionCopyWithImpl(
-      _$_InvalidTransaction _value, $Res Function(_$_InvalidTransaction) _then)
+class __$$InvalidTransactionImplCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res, _$InvalidTransactionImpl>
+    implements _$$InvalidTransactionImplCopyWith<$Res> {
+  __$$InvalidTransactionImplCopyWithImpl(_$InvalidTransactionImpl _value,
+      $Res Function(_$InvalidTransactionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransactionFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$_InvalidTransaction implements _InvalidTransaction {
-  const _$_InvalidTransaction();
+class _$InvalidTransactionImpl implements _InvalidTransaction {
+  const _$InvalidTransactionImpl();
 
   @override
   String toString() {
@@ -455,9 +470,9 @@ class _$_InvalidTransaction implements _InvalidTransaction {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InvalidTransaction);
+        (other.runtimeType == runtimeType && other is _$InvalidTransactionImpl);
   }
 
   @override
@@ -539,5 +554,5 @@ class _$_InvalidTransaction implements _InvalidTransaction {
 }
 
 abstract class _InvalidTransaction implements TransactionFailure {
-  const factory _InvalidTransaction() = _$_InvalidTransaction;
+  const factory _InvalidTransaction() = _$InvalidTransactionImpl;
 }

@@ -12,24 +12,26 @@ part of 'transaction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Transaction {
   int get id => throw _privateConstructorUsedError;
   TransactionCategory get category => throw _privateConstructorUsedError;
-  Account? get from => throw _privateConstructorUsedError;
-  Account? get to => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
-  String? get note => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
   TransactionType get type => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  Account? get from => throw _privateConstructorUsedError;
+  Account? get to => throw _privateConstructorUsedError;
+  String? get note => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TransactionCopyWith<Transaction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,15 +45,15 @@ abstract class $TransactionCopyWith<$Res> {
   $Res call(
       {int id,
       TransactionCategory category,
-      Account? from,
-      Account? to,
       double amount,
-      String? note,
-      String? description,
       TransactionType type,
       DateTime date,
       DateTime createdAt,
       DateTime updatedAt,
+      Account? from,
+      Account? to,
+      String? note,
+      String? description,
       DateTime? deletedAt});
 
   $TransactionCategoryCopyWith<$Res> get category;
@@ -69,20 +71,22 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? category = null,
-    Object? from = freezed,
-    Object? to = freezed,
     Object? amount = null,
-    Object? note = freezed,
-    Object? description = freezed,
     Object? type = null,
     Object? date = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? from = freezed,
+    Object? to = freezed,
+    Object? note = freezed,
+    Object? description = freezed,
     Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -94,26 +98,10 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as TransactionCategory,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as Account?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as Account?,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -130,6 +118,22 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Account?,
+      to: freezed == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Account?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -137,6 +141,8 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     ) as $Val);
   }
 
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TransactionCategoryCopyWith<$Res> get category {
@@ -145,6 +151,8 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     });
   }
 
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res>? get from {
@@ -157,6 +165,8 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     });
   }
 
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res>? get to {
@@ -171,25 +181,25 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
 }
 
 /// @nodoc
-abstract class _$$_TransactionCopyWith<$Res>
+abstract class _$$TransactionImplCopyWith<$Res>
     implements $TransactionCopyWith<$Res> {
-  factory _$$_TransactionCopyWith(
-          _$_Transaction value, $Res Function(_$_Transaction) then) =
-      __$$_TransactionCopyWithImpl<$Res>;
+  factory _$$TransactionImplCopyWith(
+          _$TransactionImpl value, $Res Function(_$TransactionImpl) then) =
+      __$$TransactionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       TransactionCategory category,
-      Account? from,
-      Account? to,
       double amount,
-      String? note,
-      String? description,
       TransactionType type,
       DateTime date,
       DateTime createdAt,
       DateTime updatedAt,
+      Account? from,
+      Account? to,
+      String? note,
+      String? description,
       DateTime? deletedAt});
 
   @override
@@ -201,30 +211,32 @@ abstract class _$$_TransactionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TransactionCopyWithImpl<$Res>
-    extends _$TransactionCopyWithImpl<$Res, _$_Transaction>
-    implements _$$_TransactionCopyWith<$Res> {
-  __$$_TransactionCopyWithImpl(
-      _$_Transaction _value, $Res Function(_$_Transaction) _then)
+class __$$TransactionImplCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res, _$TransactionImpl>
+    implements _$$TransactionImplCopyWith<$Res> {
+  __$$TransactionImplCopyWithImpl(
+      _$TransactionImpl _value, $Res Function(_$TransactionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? category = null,
-    Object? from = freezed,
-    Object? to = freezed,
     Object? amount = null,
-    Object? note = freezed,
-    Object? description = freezed,
     Object? type = null,
     Object? date = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? from = freezed,
+    Object? to = freezed,
+    Object? note = freezed,
+    Object? description = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_$_Transaction(
+    return _then(_$TransactionImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -233,26 +245,10 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as TransactionCategory,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as Account?,
-      to: freezed == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as Account?,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      note: freezed == note
-          ? _value.note
-          : note // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -269,6 +265,22 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Account?,
+      to: freezed == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Account?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -279,19 +291,19 @@ class __$$_TransactionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Transaction extends _Transaction {
-  const _$_Transaction(
+class _$TransactionImpl extends _Transaction {
+  const _$TransactionImpl(
       {required this.id,
       required this.category,
-      this.from,
-      this.to,
       required this.amount,
-      this.note,
-      this.description,
       required this.type,
       required this.date,
       required this.createdAt,
       required this.updatedAt,
+      this.from,
+      this.to,
+      this.note,
+      this.description,
       this.deletedAt})
       : super._();
 
@@ -300,15 +312,7 @@ class _$_Transaction extends _Transaction {
   @override
   final TransactionCategory category;
   @override
-  final Account? from;
-  @override
-  final Account? to;
-  @override
   final double amount;
-  @override
-  final String? note;
-  @override
-  final String? description;
   @override
   final TransactionType type;
   @override
@@ -318,62 +322,72 @@ class _$_Transaction extends _Transaction {
   @override
   final DateTime updatedAt;
   @override
+  final Account? from;
+  @override
+  final Account? to;
+  @override
+  final String? note;
+  @override
+  final String? description;
+  @override
   final DateTime? deletedAt;
 
   @override
   String toString() {
-    return 'Transaction(id: $id, category: $category, from: $from, to: $to, amount: $amount, note: $note, description: $description, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'Transaction(id: $id, category: $category, amount: $amount, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, from: $from, to: $to, note: $note, description: $description, deletedAt: $deletedAt)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Transaction &&
+            other is _$TransactionImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            (identical(other.from, from) || other.from == from) &&
-            (identical(other.to, to) || other.to == to) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.note, note) || other.note == note) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.deletedAt, deletedAt) ||
                 other.deletedAt == deletedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, category, from, to, amount,
-      note, description, type, date, createdAt, updatedAt, deletedAt);
+  int get hashCode => Object.hash(runtimeType, id, category, amount, type, date,
+      createdAt, updatedAt, from, to, note, description, deletedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TransactionCopyWith<_$_Transaction> get copyWith =>
-      __$$_TransactionCopyWithImpl<_$_Transaction>(this, _$identity);
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
+      __$$TransactionImplCopyWithImpl<_$TransactionImpl>(this, _$identity);
 }
 
 abstract class _Transaction extends Transaction {
   const factory _Transaction(
       {required final int id,
       required final TransactionCategory category,
-      final Account? from,
-      final Account? to,
       required final double amount,
-      final String? note,
-      final String? description,
       required final TransactionType type,
       required final DateTime date,
       required final DateTime createdAt,
       required final DateTime updatedAt,
-      final DateTime? deletedAt}) = _$_Transaction;
+      final Account? from,
+      final Account? to,
+      final String? note,
+      final String? description,
+      final DateTime? deletedAt}) = _$TransactionImpl;
   const _Transaction._() : super._();
 
   @override
@@ -381,15 +395,7 @@ abstract class _Transaction extends Transaction {
   @override
   TransactionCategory get category;
   @override
-  Account? get from;
-  @override
-  Account? get to;
-  @override
   double get amount;
-  @override
-  String? get note;
-  @override
-  String? get description;
   @override
   TransactionType get type;
   @override
@@ -399,9 +405,20 @@ abstract class _Transaction extends Transaction {
   @override
   DateTime get updatedAt;
   @override
-  DateTime? get deletedAt;
+  Account? get from;
   @override
-  @JsonKey(ignore: true)
-  _$$_TransactionCopyWith<_$_Transaction> get copyWith =>
+  Account? get to;
+  @override
+  String? get note;
+  @override
+  String? get description;
+  @override
+  DateTime? get deletedAt;
+
+  /// Create a copy of Transaction
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Failure {
@@ -78,28 +78,34 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$UnexpectedCopyWith<$Res> {
-  factory _$$UnexpectedCopyWith(
-          _$Unexpected value, $Res Function(_$Unexpected) then) =
-      __$$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UnexpectedCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$Unexpected>
-    implements _$$UnexpectedCopyWith<$Res> {
-  __$$UnexpectedCopyWithImpl(
-      _$Unexpected _value, $Res Function(_$Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$Unexpected implements Unexpected {
-  const _$Unexpected();
+class _$UnexpectedImpl implements Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -107,9 +113,9 @@ class _$Unexpected implements Unexpected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -186,29 +192,34 @@ class _$Unexpected implements Unexpected {
 }
 
 abstract class Unexpected implements Failure {
-  const factory Unexpected() = _$Unexpected;
+  const factory Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$InsufficientPermissionCopyWith<$Res> {
-  factory _$$InsufficientPermissionCopyWith(_$InsufficientPermission value,
-          $Res Function(_$InsufficientPermission) then) =
-      __$$InsufficientPermissionCopyWithImpl<$Res>;
+abstract class _$$InsufficientPermissionImplCopyWith<$Res> {
+  factory _$$InsufficientPermissionImplCopyWith(
+          _$InsufficientPermissionImpl value,
+          $Res Function(_$InsufficientPermissionImpl) then) =
+      __$$InsufficientPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InsufficientPermissionCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$InsufficientPermission>
-    implements _$$InsufficientPermissionCopyWith<$Res> {
-  __$$InsufficientPermissionCopyWithImpl(_$InsufficientPermission _value,
-      $Res Function(_$InsufficientPermission) _then)
+class __$$InsufficientPermissionImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$InsufficientPermissionImpl>
+    implements _$$InsufficientPermissionImplCopyWith<$Res> {
+  __$$InsufficientPermissionImplCopyWithImpl(
+      _$InsufficientPermissionImpl _value,
+      $Res Function(_$InsufficientPermissionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InsufficientPermission implements InsufficientPermission {
-  const _$InsufficientPermission();
+class _$InsufficientPermissionImpl implements InsufficientPermission {
+  const _$InsufficientPermissionImpl();
 
   @override
   String toString() {
@@ -216,9 +227,10 @@ class _$InsufficientPermission implements InsufficientPermission {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InsufficientPermission);
+        (other.runtimeType == runtimeType &&
+            other is _$InsufficientPermissionImpl);
   }
 
   @override
@@ -295,29 +307,32 @@ class _$InsufficientPermission implements InsufficientPermission {
 }
 
 abstract class InsufficientPermission implements Failure {
-  const factory InsufficientPermission() = _$InsufficientPermission;
+  const factory InsufficientPermission() = _$InsufficientPermissionImpl;
 }
 
 /// @nodoc
-abstract class _$$DatabaseFailureCopyWith<$Res> {
-  factory _$$DatabaseFailureCopyWith(
-          _$DatabaseFailure value, $Res Function(_$DatabaseFailure) then) =
-      __$$DatabaseFailureCopyWithImpl<$Res>;
+abstract class _$$DatabaseFailureImplCopyWith<$Res> {
+  factory _$$DatabaseFailureImplCopyWith(_$DatabaseFailureImpl value,
+          $Res Function(_$DatabaseFailureImpl) then) =
+      __$$DatabaseFailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DatabaseFailureCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$DatabaseFailure>
-    implements _$$DatabaseFailureCopyWith<$Res> {
-  __$$DatabaseFailureCopyWithImpl(
-      _$DatabaseFailure _value, $Res Function(_$DatabaseFailure) _then)
+class __$$DatabaseFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$DatabaseFailureImpl>
+    implements _$$DatabaseFailureImplCopyWith<$Res> {
+  __$$DatabaseFailureImplCopyWithImpl(
+      _$DatabaseFailureImpl _value, $Res Function(_$DatabaseFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$DatabaseFailure implements DatabaseFailure {
-  const _$DatabaseFailure();
+class _$DatabaseFailureImpl implements DatabaseFailure {
+  const _$DatabaseFailureImpl();
 
   @override
   String toString() {
@@ -325,9 +340,9 @@ class _$DatabaseFailure implements DatabaseFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DatabaseFailure);
+        (other.runtimeType == runtimeType && other is _$DatabaseFailureImpl);
   }
 
   @override
@@ -404,5 +419,5 @@ class _$DatabaseFailure implements DatabaseFailure {
 }
 
 abstract class DatabaseFailure implements Failure {
-  const factory DatabaseFailure() = _$DatabaseFailure;
+  const factory DatabaseFailure() = _$DatabaseFailureImpl;
 }
