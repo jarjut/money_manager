@@ -32,12 +32,22 @@ enum ColorName {
     return color.harmonizeWith(primaryColor);
   }
 
-  Scheme harmonizedScheme(BuildContext context) {
+  DynamicScheme harmonizedScheme(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     if (brightness == Brightness.light) {
-      return Scheme.light(harmonized(context).value);
+      return SchemeTonalSpot(
+        sourceColorHct: Hct.fromInt(harmonized(context).value),
+        isDark: false,
+        contrastLevel: 0,
+      );
+      // return Scheme.light(harmonized(context).value);
     } else {
-      return Scheme.dark(harmonized(context).value);
+      return SchemeTonalSpot(
+        sourceColorHct: Hct.fromInt(harmonized(context).value),
+        isDark: true,
+        contrastLevel: 0,
+      );
+      // return Scheme.dark(harmonized(context).value);
     }
   }
 
