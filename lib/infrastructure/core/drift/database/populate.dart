@@ -37,7 +37,7 @@ Future<void> _populateDatabase(AppDatabase db) async {
           id: Value(2),
           name: Value('Accounts'),
           origin: Value(true),
-        )
+        ),
       ],
     );
   });
